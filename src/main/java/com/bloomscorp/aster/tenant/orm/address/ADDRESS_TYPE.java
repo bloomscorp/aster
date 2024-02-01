@@ -1,4 +1,4 @@
-package com.bloomscorp.aster.tenant.address;
+package com.bloomscorp.aster.tenant.orm.address;
 
 public enum ADDRESS_TYPE {
 	PERMANENT,
