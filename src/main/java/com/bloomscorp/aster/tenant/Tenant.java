@@ -1,4 +1,4 @@
 package com.bloomscorp.aster.tenant;
 
-public class AsterTenant {
+public class Tenant {
 }
