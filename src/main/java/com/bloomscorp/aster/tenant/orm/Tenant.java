@@ -91,7 +91,7 @@ public abstract class Tenant<
 	@ColumnDefault("0")
 	private Long dob = 0L;
 
-	// create an "gender_enum" at the database level
+	// TODO: create a "gender_enum" at the database level
 	@Enumerated(EnumType.STRING)
 	@Column(
 		name = TenantContract.GENDER,
@@ -166,7 +166,7 @@ public abstract class Tenant<
 	@ColumnDefault("false")
 	private boolean deleted = false;
 
-	// create "auth_provider_enum" at the database level
+	// TODO: create a "auth_provider_enum" at the database level
 	@Enumerated(EnumType.STRING)
 	@Column(
 		name = TenantContract.PROVIDER,
