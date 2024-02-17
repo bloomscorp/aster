@@ -112,7 +112,7 @@ public abstract class Address<
     )
     @Type(PostgreSQLEnumType.class)
     @ColumnDefault("'HOME'")
-    public ADDRESS_TYPE addressType = ADDRESS_TYPE.HOME;
+    public ADDRESS_TYPE addressType = ADDRESS_TYPE.PERMANENT;
 
     @Column(
         name = AddressContract.DEFAULT_ADDRESS,
