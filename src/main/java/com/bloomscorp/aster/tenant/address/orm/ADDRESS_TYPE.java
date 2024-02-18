@@ -1,10 +1,10 @@
 package com.bloomscorp.aster.tenant.address.orm;
 
 public enum ADDRESS_TYPE {
-	PERMANENT,
 	PRESENT,
+	PERMANENT,
 	WORK,
 	HOME,
-	FRIEND,
+	OFFICE,
 	FAMILY
 }
