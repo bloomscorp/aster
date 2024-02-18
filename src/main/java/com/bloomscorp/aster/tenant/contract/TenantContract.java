@@ -20,6 +20,7 @@ public final class TenantContract {
 	public static final String BAN_DATE = "ban_date";
 	public static final String BAN_UPLIFT_DATE = "ban_uplift_date";
 	public static final String DELETED = "deleted";
+	public static final String PROVIDER = "provider";
 
 	private TenantContract() {}
 }

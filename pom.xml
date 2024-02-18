@@ -64,7 +64,7 @@
         <dependency>
             <groupId>com.bloomscorp</groupId>
             <artifactId>bmx-spring-base</artifactId>
-            <version>0.0.66</version>
+            <version>0.0.67</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

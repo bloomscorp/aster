@@ -2,6 +2,7 @@ package com.bloomscorp.aster.tenant.orm;
 
 import com.bloomscorp.aster.tenant.contract.TenantContract;
 import com.bloomscorp.behemoth.orm.BehemothORM;
+import com.bloomscorp.nverse.pojo.NVERSE_AUTH_PROVIDER;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.*;
@@ -90,6 +91,7 @@ public abstract class Tenant<
 	@ColumnDefault("0")
 	private Long dob = 0L;
 
+	// TODO: create a "gender_enum" at the database level
 	@Enumerated(EnumType.STRING)
 	@Column(
 		name = TenantContract.GENDER,
@@ -163,6 +165,17 @@ public abstract class Tenant<
 	)
 	@ColumnDefault("false")
 	private boolean deleted = false;
+
+	// TODO: create a "auth_provider_enum" at the database level
+	@Enumerated(EnumType.STRING)
+	@Column(
+		name = TenantContract.PROVIDER,
+		columnDefinition = "auth_provider_enum",
+		nullable = false
+	)
+	@Type(PostgreSQLEnumType.class)
+	@ColumnDefault("UNKNOWN")
+	private NVERSE_AUTH_PROVIDER provider = NVERSE_AUTH_PROVIDER.UNKNOWN;
 
 	@Transient
 	private String decryptedEmail;
