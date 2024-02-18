@@ -1,4 +1,4 @@
-package com.bloomscorp.aster.tenant.orm.address.contract;
+package com.bloomscorp.aster.tenant.address.contract;
 
 public class AddressContract {
 
