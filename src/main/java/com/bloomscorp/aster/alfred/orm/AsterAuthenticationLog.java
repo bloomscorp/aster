@@ -7,18 +7,17 @@ import com.bloomscorp.aster.support.Constant;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
 
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 @MappedSuperclass
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class AsterAuthenticationLog extends BehemothORM implements AuthenticationLog {
 
 	@Enumerated(EnumType.STRING)
