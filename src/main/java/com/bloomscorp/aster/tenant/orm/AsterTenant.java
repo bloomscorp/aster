@@ -15,9 +15,9 @@ import java.util.List;
 
 @Getter
 @MappedSuperclass
-public abstract class Tenant<
+public abstract class AsterTenant<
 	E extends Enum<E>,
-	R extends UserRole<E>
+	R extends AsterUserRole<E>
 > extends BehemothORM implements NVerseTenant<E, R> {
 
 	@Column(

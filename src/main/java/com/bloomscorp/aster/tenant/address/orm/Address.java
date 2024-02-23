@@ -1,6 +1,6 @@
 package com.bloomscorp.aster.tenant.address.orm;
 
-import com.bloomscorp.aster.tenant.orm.UserRole;
+import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.aster.tenant.address.contract.AddressContract;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
@@ -17,7 +17,7 @@ import org.hibernate.annotations.Type;
 @MappedSuperclass
 public abstract class Address<
 	E extends Enum<E>,
-	R extends UserRole<E>,
+	R extends AsterUserRole<E>,
 	T extends NVerseTenant<E, R>
 	> extends BehemothORM {
 

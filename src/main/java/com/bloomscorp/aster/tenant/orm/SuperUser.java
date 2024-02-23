@@ -7,8 +7,8 @@ import lombok.Getter;
 @MappedSuperclass
 public abstract class SuperUser<
 	E extends Enum<E>,
-	R extends UserRole<E>,
-	T extends Tenant<E, R>
+	R extends AsterUserRole<E>,
+	T extends AsterTenant<E, R>
 > {
 	public abstract T getTenant();
 }

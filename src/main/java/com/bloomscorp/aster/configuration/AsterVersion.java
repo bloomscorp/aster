@@ -1,4 +1,4 @@
-package com.bloomscorp.aster.config;
+package com.bloomscorp.aster.configuration;
 
 public class AsterVersion {
 

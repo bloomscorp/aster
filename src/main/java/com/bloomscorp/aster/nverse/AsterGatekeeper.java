@@ -1,13 +1,13 @@
 package com.bloomscorp.aster.nverse;
 
-import com.bloomscorp.aster.tenant.orm.Tenant;
-import com.bloomscorp.aster.tenant.orm.UserRole;
+import com.bloomscorp.aster.tenant.orm.AsterTenant;
+import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.NVerseGatekeeper;
 
 public abstract class AsterGatekeeper<
-	T extends Tenant<E, R>,
+	T extends AsterTenant<E, R>,
 	E extends Enum<E>,
-	R extends UserRole<E>,
+	R extends AsterUserRole<E>,
 	S extends AsterSecureLayer<T, E, R>
 > extends NVerseGatekeeper<T, E, R> {
 
