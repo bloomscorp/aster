@@ -8,12 +8,14 @@ import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
 
 import java.util.List;
 
 @Getter
+@Setter
 @MappedSuperclass
 public abstract class AsterTenant<
 	E extends Enum<E>,
