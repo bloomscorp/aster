@@ -1,7 +1,7 @@
 package com.bloomscorp.aster.tenant.address.orm;
 
-import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.aster.tenant.address.contract.AddressContract;
+import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
