@@ -1,5 +1,6 @@
 package com.bloomscorp.aster;
 
+import com.bloomscorp.bsb.BmxApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 
@@ -10,7 +11,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Controller
-@SpringBootApplication
+@BmxApplication
 public @interface AsterApplication {
 }
