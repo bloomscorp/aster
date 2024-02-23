@@ -2,8 +2,6 @@ package com.bloomscorp.aster.support;
 
 public final class AsterRequestMapper {
 
-	private AsterRequestMapper() {}
-
 	public static final String ROOT_URL = "/";
 	public static final String ERROR = "/error";
 	public static final String EMAIL_AUTHENTICATION_URL = "/authenticate/email";
@@ -15,4 +13,6 @@ public final class AsterRequestMapper {
 	public static final String CONFIRM_VERIFICATION_EMAIL = "/confirm/verification/email";
 	public static final String SEND_PASSWORD_RESET_EMAIL = "/send/password-reset/email";
 	public static final String RESET_PASSWORD = "/reset/password";
+
+	private AsterRequestMapper() {}
 }
