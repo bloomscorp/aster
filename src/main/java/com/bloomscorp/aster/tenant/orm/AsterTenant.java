@@ -21,7 +21,7 @@ public abstract class AsterTenant<
 > extends BehemothORM implements NVerseTenant<E, R> {
 
 	@Column(
-		name = TenantContract.ASTER_ID,
+		name = TenantContract.UID,
 		columnDefinition = "VARCHAR",
 		length = 22,
 		nullable = false
@@ -91,7 +91,6 @@ public abstract class AsterTenant<
 	@ColumnDefault("0")
 	private Long dob = 0L;
 
-	// TODO: create a "gender_enum" at the database level
 	@Enumerated(EnumType.STRING)
 	@Column(
 		name = TenantContract.GENDER,
@@ -166,7 +165,6 @@ public abstract class AsterTenant<
 	@ColumnDefault("false")
 	private boolean deleted = false;
 
-	// TODO: create a "auth_provider_enum" at the database level
 	@Enumerated(EnumType.STRING)
 	@Column(
 		name = TenantContract.PROVIDER,

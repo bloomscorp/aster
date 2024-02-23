@@ -2,7 +2,7 @@ package com.bloomscorp.aster.tenant.contract;
 
 public final class TenantContract {
 
-	public static final String ASTER_ID = "aster_id";
+	public static final String UID = "uid";
 	public static final String EMAIL = "email";
 	public static final String EMAIL_VERIFIED = "email_verified";
 	public static final String CONTACT = "contact_number";
