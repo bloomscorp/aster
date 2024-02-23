@@ -1,5 +1,7 @@
 package com.bloomscorp.aster.configuration;
 
+import com.bloomscorp.aster.tenant.orm.AsterTenant;
+import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.*;
 import com.bloomscorp.raintree.RainTree;
 import lombok.AllArgsConstructor;
@@ -13,7 +15,11 @@ import java.security.SecureRandom;
 
 @Configuration
 //@AllArgsConstructor(onConstructor = @__({@Autowired}))
-public class AsterLaunchSequence1 {
+public class AsterLaunchSequence1<
+	T extends AsterTenant<E, R>,
+	E extends Enum<E>,
+	R extends AsterUserRole<E>
+> {
 
 //	private final RainTree rainTree;
 //	private final LoomCronManager cronManager;
@@ -48,24 +54,17 @@ public class AsterLaunchSequence1 {
 		return new NVerseAuthenticationService();
 	}
 
-//	@Bean
-//	@ConditionalOnMissingBean
-//	public NVerseJWTService<LoomTenant, USER_ROLE, UserRole> nVerseJWTService(
-//		@Value("${nverse.jwt.secret}") String jwtSecret) {
-//		return new NVerseJWTService<>(jwtSecret);
-//	}
-//
-//	@Bean
-//	@ConditionalOnMissingBean
-//	public NVersePasswordEncoder nVersePasswordEncoder(
-//		@Value("${nverse.encoder.pepper}") String pepper
-//	) {
-//		return new NVersePasswordEncoder(
-//			11,
-//			new SecureRandom(),
-//			pepper
-//		);
-//	}
+	public NVerseJWTService<T, E, R> nVerseJWTService(String jwtSecret) {
+		return new NVerseJWTService<>(jwtSecret);
+	}
+
+	public NVersePasswordEncoder nVersePasswordEncoder(String pepper) {
+		return new NVersePasswordEncoder(
+			11,
+			new SecureRandom(),
+			pepper
+		);
+	}
 //
 //	@Bean
 //	@ConditionalOnMissingBean
