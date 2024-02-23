@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
 import java.security.SecureRandom;
 
 @Configuration
-@AllArgsConstructor(onConstructor = @__({@Autowired}))
+//@AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class AsterLaunchSequence1 {
 
-	private final RainTree rainTree;
+//	private final RainTree rainTree;
 //	private final LoomCronManager cronManager;
 
 	@Bean

@@ -10,15 +10,15 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class AsterLaunchSequence2 {
 
-	private final NVerseEmailValidator emailValidator;
-
-	public NVerseEmailEncoder emailEncoder(String encoderKey) {
+	public NVerseEmailEncoder emailEncoder(
+		NVerseEmailValidator emailValidator,
+		String encoderKey
+	) {
 		return new NVerseEmailEncoder(
 			encoderKey,
-			this.emailValidator,
+			emailValidator,
 			NVerseAES.SHA512
 		);
 	}
