@@ -1,7 +1,5 @@
 package com.bloomscorp.aster.configuration;
 
-import com.bloomscorp.aster.tenant.orm.AsterTenant;
-import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
