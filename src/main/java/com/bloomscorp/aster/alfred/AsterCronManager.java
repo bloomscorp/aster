@@ -5,15 +5,21 @@ import com.bloomscorp.alfred.cron.CronManager;
 import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
+import com.bloomscorp.aster.support.Constant;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
+import com.bloomscorp.aster.tenant.orm.TenantFacade;
 import com.bloomscorp.aster.tenant.orm.USER_ROLE;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
+@Service
+@Scope(Constant.SCOPE_SINGLETON)
 public class AsterCronManager extends CronManager<
 	AsterLogBook,
 	AsterLog,
 	AsterAuthenticationLog,
-	AsterTenant<USER_ROLE, AsterUserRole<USER_ROLE>>,
+	TenantFacade,
 	USER_ROLE,
 	AsterUserRole<USER_ROLE>
 > {

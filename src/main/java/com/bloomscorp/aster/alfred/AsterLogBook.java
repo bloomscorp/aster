@@ -2,26 +2,26 @@ package com.bloomscorp.aster.alfred;
 
 import com.bloomscorp.alfred.LogBook;
 import com.bloomscorp.alfred.adapter.ILogBookDAO;
+import com.bloomscorp.alfred.orm.AUTH_ACTION_ENUM;
 import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.alfred.orm.LOG_TYPE;
 import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
+import com.bloomscorp.aster.support.Constant;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
+import com.bloomscorp.aster.tenant.orm.TenantFacade;
 import com.bloomscorp.aster.tenant.orm.USER_ROLE;
 import com.bloomscorp.pastebox.Pastebox;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
-
-/*
-Type parameter 'com.bloomscorp.aster.alfred.AsterLogBook' is not within its bound; should extend 'com.bloomscorp.alfred.LogBook<com.bloomscorp.aster.alfred.orm.AsterLog,com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog,T,E,R>'
-T extends AsterTenant<E, R>,
-	E extends Enum<E>,
-	R extends AsterUserRole<E>
- */
-public abstract class AsterLogBook extends LogBook<
+@Service
+@Scope(Constant.SCOPE_SINGLETON)
+public class AsterLogBook extends LogBook<
 	AsterLog,
 	AsterAuthenticationLog,
-	AsterTenant<USER_ROLE, AsterUserRole<USER_ROLE>>,
+	TenantFacade,
 	USER_ROLE,
 	AsterUserRole<USER_ROLE>
 > {
@@ -44,6 +44,18 @@ public abstract class AsterLogBook extends LogBook<
 			.message(message)
 			.dataDump(dataDump)
 			.time(Pastebox.getCurrentTimeInMillis())
+			.build();
+	}
+
+	@Override
+	public AsterAuthenticationLog buildAuthenticationLogInstance(
+		AUTH_ACTION_ENUM action,
+		TenantFacade tenantFacade
+	) {
+		return AsterAuthenticationLog
+			.builder()
+			.action(action)
+			.tenant(tenantFacade)
 			.build();
 	}
 }

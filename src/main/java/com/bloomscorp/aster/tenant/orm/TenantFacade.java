@@ -3,12 +3,15 @@ package com.bloomscorp.aster.tenant.orm;
 import com.bloomscorp.aster.tenant.contract.TenantContract;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVERSE_AUTH_PROVIDER;
+import com.bloomscorp.nverse.pojo.NVerseTenant;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,7 +38,7 @@ import org.hibernate.annotations.Type;
 		)
 	}
 )
-public class TenantFacade extends BehemothORM {
+public class TenantFacade extends BehemothORM implements NVerseTenant<USER_ROLE, AsterUserRole<USER_ROLE>> {
 
 	@Column(
 		name = TenantContract.UID,
@@ -61,6 +64,14 @@ public class TenantFacade extends BehemothORM {
 	)
 	@ColumnDefault("''")
 	private String contactNumber;
+
+	@Column(
+		name = TenantContract.PASSWORD,
+		columnDefinition = "VARCHAR",
+		length = 120,
+		nullable = false
+	)
+	private String password;
 
 	@Column(
 		name = TenantContract.NAME,
@@ -97,6 +108,22 @@ public class TenantFacade extends BehemothORM {
 	@ColumnDefault("true")
 	private boolean active = true;
 
+	@Column(
+		name = TenantContract.SUSPENDED,
+		columnDefinition = "BOOLEAN",
+		nullable = false
+	)
+	@ColumnDefault("false")
+	private boolean suspended = false;
+
+	@Column(
+		name = TenantContract.DELETED,
+		columnDefinition = "BOOLEAN",
+		nullable = false
+	)
+	@ColumnDefault("false")
+	private boolean deleted = false;
+
 	@Enumerated(EnumType.STRING)
 	@Column(
 		name = TenantContract.PROVIDER,
@@ -109,4 +136,9 @@ public class TenantFacade extends BehemothORM {
 
 	@Transient
 	private String decryptedEmail;
+
+	@Override
+	public List<AsterUserRole<USER_ROLE>> getRoles() {
+		throw new UnsupportedOperationException("TenantFacade does not have access to user roles!");
+	}
 }
