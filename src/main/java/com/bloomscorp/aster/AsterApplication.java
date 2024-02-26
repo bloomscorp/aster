@@ -8,6 +8,7 @@ import com.bloomscorp.aster.alfred.dao.repository.LogJpaRepository;
 import com.bloomscorp.aster.configuration.AsterConfiguration;
 import com.bloomscorp.aster.configuration.AsterLaunchSequence1;
 import com.bloomscorp.bsb.BmxApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;
@@ -18,14 +19,17 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @BmxApplication
+@ComponentScan({
+	"com.bloomscorp.aster.alfred.dao.repository"
+})
 @Import({
 	AsterConfiguration.class,
 	AsterLaunchSequence1.class,
 	AsterLogBook.class,
 	AsterCronManager.class,
-	AsterLogBookRepository.class,
-	AuthenticationLogJpaRepository.class,
-	LogJpaRepository.class
+//	AsterLogBookRepository.class,
+//	AuthenticationLogJpaRepository.class,
+//	LogJpaRepository.class
 })
 public @interface AsterApplication {
 }
