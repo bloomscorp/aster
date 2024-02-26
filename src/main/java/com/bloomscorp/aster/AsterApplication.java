@@ -22,13 +22,13 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-//@BmxApplication
+@BmxApplication(scanBasePackages = {
+	"com.bloomscorp.aster"
+})
 @Controller
-@SpringBootApplication(
-	scanBasePackages = {
-		"com.bloomscorp.aster.alfred"
-	}
-)
+//@SpringBootApplication(scanBasePackages = {
+//	"com.bloomscorp.aster"
+//})
 @EnableJpaRepositories(basePackages = {
 	"com.bloomscorp.aster"
 })
