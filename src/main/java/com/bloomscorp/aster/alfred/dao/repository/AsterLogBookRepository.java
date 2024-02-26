@@ -1,6 +1,7 @@
 package com.bloomscorp.aster.alfred.dao.repository;
 
 import com.bloomscorp.alfred.adapter.ILogBookDAO;
+import com.bloomscorp.aster.alfred.AsterLogBook;
 import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
 import com.bloomscorp.aster.support.Constant;
@@ -11,11 +12,19 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Scope(Constant.SCOPE_SINGLETON)
-@AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class AsterLogBookRepository implements ILogBookDAO<AsterAuthenticationLog, AsterLog> {
 
 	private final AuthenticationLogJpaRepository authenticationLogJpaRepository;
 	private final LogJpaRepository logJpaRepository;
+
+	@Autowired
+	public AsterLogBookRepository(
+		AuthenticationLogJpaRepository authenticationLogJpaRepository,
+		LogJpaRepository logJpaRepository
+	) {
+		this.authenticationLogJpaRepository = authenticationLogJpaRepository;
+		this.logJpaRepository = logJpaRepository;
+	}
 
 	@Override
 	public long insertAuthenticationLog(AsterAuthenticationLog log) {
