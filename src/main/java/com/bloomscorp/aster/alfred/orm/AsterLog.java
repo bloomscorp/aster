@@ -7,8 +7,10 @@ import com.bloomscorp.aster.support.Constant;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
 

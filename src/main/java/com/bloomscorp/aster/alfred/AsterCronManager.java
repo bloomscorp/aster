@@ -1,21 +1,22 @@
 package com.bloomscorp.aster.alfred;
 
 
-import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
+import com.bloomscorp.alfred.cron.CronManager;
+import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
+import com.bloomscorp.aster.tenant.orm.USER_ROLE;
 
-public class AsterCronManager<
-	L extends AsterLog,
-	A extends AsterAuthenticationLog,
-	T extends AsterTenant<E, R>,
-	E extends Enum<E>,
-	R extends AsterUserRole<E>
-	> extends CronManager<
-	LoomLogBook,
-	L, A, T, E, R> {
-	public AsterCronManager(LoomLogBook logBook) {
+public class AsterCronManager<A extends AuthenticationLog> extends CronManager<
+	AsterLogBook<A>,
+	AsterLog,
+	A,
+	AsterTenant<USER_ROLE, AsterUserRole<USER_ROLE>>,
+	USER_ROLE,
+	AsterUserRole<USER_ROLE>
+> {
+	public AsterCronManager(AsterLogBook<A> logBook) {
 		super(logBook);
 	}
 }

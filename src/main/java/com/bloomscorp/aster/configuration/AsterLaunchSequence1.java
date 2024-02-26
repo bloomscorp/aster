@@ -1,5 +1,6 @@
 package com.bloomscorp.aster.configuration;
 
+import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.*;
@@ -12,6 +13,7 @@ import java.security.SecureRandom;
 @Configuration
 //@AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class AsterLaunchSequence1<
+	A extends AuthenticationLog,
 	T extends AsterTenant<E, R>,
 	E extends Enum<E>,
 	R extends AsterUserRole<E>
@@ -61,18 +63,16 @@ public class AsterLaunchSequence1<
 			pepper
 		);
 	}
-//
-//	@Bean
-//	@ConditionalOnMissingBean
+
 //	public NVerseExceptionHandlerFilter<
-//		LoomLogBook,
-//		LoomLog,
-//		LoomAuthenticationLog,
-//		LoomTenant,
-//		USER_ROLE,
-//		UserRole
-//		> nVerseExceptionHandlerFilter(
-//		@Value("${loom.config.production}") boolean isProduction
+//		AsterLogBook<A>,
+//		AsterLog,
+//		A,
+//		T,
+//		E,
+//		R
+//	> nVerseExceptionHandlerFilter(
+//		boolean isProduction
 //	) {
 //		return new NVerseExceptionHandlerFilter<>(
 //			this.rainTree,

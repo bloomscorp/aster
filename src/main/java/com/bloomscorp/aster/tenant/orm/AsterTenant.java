@@ -16,6 +16,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@Entity
 @MappedSuperclass
 public abstract class AsterTenant<
 	E extends Enum<E>,
