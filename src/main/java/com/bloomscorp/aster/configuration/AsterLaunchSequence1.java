@@ -1,7 +1,5 @@
 package com.bloomscorp.aster.configuration;
 
-import com.bloomscorp.alfred.LogBook;
-import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.aster.alfred.AsterCronManager;
 import com.bloomscorp.aster.alfred.AsterLogBook;
 import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
