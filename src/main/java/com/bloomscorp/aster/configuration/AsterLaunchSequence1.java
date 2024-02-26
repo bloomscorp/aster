@@ -8,11 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AsterLaunchSequence1<
-	T extends AsterTenant<E, R>,
-	E extends Enum<E>,
-	R extends AsterUserRole<E>
-> {
+public class AsterLaunchSequence1 {
 
 	@Bean
 	@ConditionalOnMissingBean
@@ -43,35 +39,4 @@ public class AsterLaunchSequence1<
 	public NVerseAuthenticationService nVerseAuthenticationService() {
 		return new NVerseAuthenticationService();
 	}
-
-//	public NVerseJWTService<T, E, R> nVerseJWTService(String jwtSecret) {
-//		return new NVerseJWTService<>(jwtSecret);
-//	}
-
-//	public NVersePasswordEncoder nVersePasswordEncoder(String pepper) {
-//		return new NVersePasswordEncoder(
-//			11,
-//			new SecureRandom(),
-//			pepper
-//		);
-//	}
-
-//	public NVerseExceptionHandlerFilter<
-//		AsterLogBook,
-//		AsterLog,
-//		AsterAuthenticationLog,
-//		TenantFacade,
-//		USER_ROLE,
-//		AsterUserRole<USER_ROLE>
-//	> nVerseExceptionHandlerFilter(
-//		RainTree rainTree,
-//		AsterCronManager cronManager,
-//		boolean isProduction
-//	) {
-//		return new NVerseExceptionHandlerFilter<>(
-//			rainTree,
-//			cronManager,
-//			isProduction
-//		);
-//	}
 }
