@@ -10,10 +10,7 @@ import com.bloomscorp.aster.tenant.orm.TenantFacade;
 import com.bloomscorp.aster.tenant.orm.USER_ROLE;
 import com.bloomscorp.nverse.*;
 import com.bloomscorp.raintree.RainTree;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.security.SecureRandom;
 

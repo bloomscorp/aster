@@ -1,20 +1,11 @@
 package com.bloomscorp.aster.configuration;
 
-import com.bloomscorp.aster.alfred.AsterCronManager;
-import com.bloomscorp.aster.alfred.AsterLogBook;
-import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
-import com.bloomscorp.aster.alfred.orm.AsterLog;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
-import com.bloomscorp.aster.tenant.orm.TenantFacade;
-import com.bloomscorp.aster.tenant.orm.USER_ROLE;
 import com.bloomscorp.nverse.*;
-import com.bloomscorp.raintree.RainTree;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.security.SecureRandom;
 
 @Configuration
 public class AsterLaunchSequence1<
