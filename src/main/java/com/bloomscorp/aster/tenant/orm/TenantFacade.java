@@ -35,7 +35,7 @@ import org.hibernate.annotations.Type;
 		)
 	}
 )
-public class MicroTenant extends BehemothORM {
+public class TenantFacade extends BehemothORM {
 
 	@Column(
 		name = TenantContract.UID,

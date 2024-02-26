@@ -1,8 +1,13 @@
 package com.bloomscorp.aster.configuration;
 
+import com.bloomscorp.alfred.LogBook;
 import com.bloomscorp.alfred.orm.AuthenticationLog;
+import com.bloomscorp.aster.alfred.AsterLogBook;
+import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
+import com.bloomscorp.aster.alfred.orm.AsterLog;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
+import com.bloomscorp.aster.tenant.orm.USER_ROLE;
 import com.bloomscorp.nverse.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +18,11 @@ import java.security.SecureRandom;
 @Configuration
 //@AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class AsterLaunchSequence1<
-	A extends AuthenticationLog,
+	ALB extends LogBook<
+		AsterLog,
+		AsterAuthenticationLog,
+		T, E, R
+		>,
 	T extends AsterTenant<E, R>,
 	E extends Enum<E>,
 	R extends AsterUserRole<E>
@@ -64,20 +73,22 @@ public class AsterLaunchSequence1<
 		);
 	}
 
-//	public NVerseExceptionHandlerFilter<
-//		AsterLogBook<A>,
-//		AsterLog,
-//		A,
-//		T,
-//		E,
-//		R
-//	> nVerseExceptionHandlerFilter(
-//		boolean isProduction
-//	) {
+	public NVerseExceptionHandlerFilter<
+//		AsterLogBook,
+		ALB,
+		AsterLog,
+		AsterAuthenticationLog,
+		T,
+		E,
+		R
+	> nVerseExceptionHandlerFilter(
+		boolean isProduction
+	) {
 //		return new NVerseExceptionHandlerFilter<>(
 //			this.rainTree,
 //			this.cronManager,
 //			isProduction
 //		);
-//	}
+		return null;
+	}
 }

@@ -3,20 +3,21 @@ package com.bloomscorp.aster.alfred;
 
 import com.bloomscorp.alfred.cron.CronManager;
 import com.bloomscorp.alfred.orm.AuthenticationLog;
+import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.aster.tenant.orm.USER_ROLE;
 
-public class AsterCronManager<A extends AuthenticationLog> extends CronManager<
-	AsterLogBook<A>,
+public class AsterCronManager extends CronManager<
+	AsterLogBook,
 	AsterLog,
-	A,
+	AsterAuthenticationLog,
 	AsterTenant<USER_ROLE, AsterUserRole<USER_ROLE>>,
 	USER_ROLE,
 	AsterUserRole<USER_ROLE>
 > {
-	public AsterCronManager(AsterLogBook<A> logBook) {
+	public AsterCronManager(AsterLogBook logBook) {
 		super(logBook);
 	}
 }

@@ -4,21 +4,29 @@ import com.bloomscorp.alfred.LogBook;
 import com.bloomscorp.alfred.adapter.ILogBookDAO;
 import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.alfred.orm.LOG_TYPE;
+import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.aster.tenant.orm.USER_ROLE;
 import com.bloomscorp.pastebox.Pastebox;
 
-public abstract class AsterLogBook<A extends AuthenticationLog> extends LogBook<
+
+/*
+Type parameter 'com.bloomscorp.aster.alfred.AsterLogBook' is not within its bound; should extend 'com.bloomscorp.alfred.LogBook<com.bloomscorp.aster.alfred.orm.AsterLog,com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog,T,E,R>'
+T extends AsterTenant<E, R>,
+	E extends Enum<E>,
+	R extends AsterUserRole<E>
+ */
+public abstract class AsterLogBook extends LogBook<
 	AsterLog,
-	A,
+	AsterAuthenticationLog,
 	AsterTenant<USER_ROLE, AsterUserRole<USER_ROLE>>,
 	USER_ROLE,
 	AsterUserRole<USER_ROLE>
 > {
 
-	public AsterLogBook(ILogBookDAO<A, AsterLog> repository) {
+	public AsterLogBook(ILogBookDAO<AsterAuthenticationLog, AsterLog> repository) {
 		super(repository);
 	}
 
