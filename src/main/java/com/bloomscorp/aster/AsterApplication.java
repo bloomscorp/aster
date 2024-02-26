@@ -8,8 +8,10 @@ import com.bloomscorp.aster.alfred.dao.repository.LogJpaRepository;
 import com.bloomscorp.aster.configuration.AsterConfiguration;
 import com.bloomscorp.aster.configuration.AsterLaunchSequence1;
 import com.bloomscorp.bsb.BmxApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
+import org.springframework.stereotype.Controller;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -18,10 +20,13 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@BmxApplication
-@ComponentScan({
-	"com.bloomscorp.aster.alfred.dao.repository"
-})
+//@BmxApplication
+@Controller
+@SpringBootApplication(
+	scanBasePackages = {
+		"com.bloomscorp.aster.alfred"
+	}
+)
 @Import({
 	AsterConfiguration.class,
 	AsterLaunchSequence1.class,
