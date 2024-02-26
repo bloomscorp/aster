@@ -3,6 +3,8 @@ package com.bloomscorp.aster;
 import com.bloomscorp.aster.alfred.AsterCronManager;
 import com.bloomscorp.aster.alfred.AsterLogBook;
 import com.bloomscorp.aster.alfred.dao.repository.AsterLogBookRepository;
+import com.bloomscorp.aster.alfred.dao.repository.AuthenticationLogJpaRepository;
+import com.bloomscorp.aster.alfred.dao.repository.LogJpaRepository;
 import com.bloomscorp.aster.configuration.AsterConfiguration;
 import com.bloomscorp.aster.configuration.AsterLaunchSequence1;
 import com.bloomscorp.bsb.BmxApplication;
@@ -21,7 +23,9 @@ import java.lang.annotation.Target;
 	AsterLaunchSequence1.class,
 	AsterLogBook.class,
 	AsterCronManager.class,
-	AsterLogBookRepository.class
+	AsterLogBookRepository.class,
+	AuthenticationLogJpaRepository.class,
+	LogJpaRepository.class
 })
 public @interface AsterApplication {
 }
