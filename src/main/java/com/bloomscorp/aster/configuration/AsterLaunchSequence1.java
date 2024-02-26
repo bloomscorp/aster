@@ -53,34 +53,34 @@ public class AsterLaunchSequence1<
 		return new NVerseAuthenticationService();
 	}
 
-	public NVerseJWTService<T, E, R> nVerseJWTService(String jwtSecret) {
-		return new NVerseJWTService<>(jwtSecret);
-	}
+//	public NVerseJWTService<T, E, R> nVerseJWTService(String jwtSecret) {
+//		return new NVerseJWTService<>(jwtSecret);
+//	}
 
-	public NVersePasswordEncoder nVersePasswordEncoder(String pepper) {
-		return new NVersePasswordEncoder(
-			11,
-			new SecureRandom(),
-			pepper
-		);
-	}
+//	public NVersePasswordEncoder nVersePasswordEncoder(String pepper) {
+//		return new NVersePasswordEncoder(
+//			11,
+//			new SecureRandom(),
+//			pepper
+//		);
+//	}
 
-	public NVerseExceptionHandlerFilter<
-		AsterLogBook,
-		AsterLog,
-		AsterAuthenticationLog,
-		TenantFacade,
-		USER_ROLE,
-		AsterUserRole<USER_ROLE>
-	> nVerseExceptionHandlerFilter(
-		RainTree rainTree,
-		AsterCronManager cronManager,
-		boolean isProduction
-	) {
-		return new NVerseExceptionHandlerFilter<>(
-			rainTree,
-			cronManager,
-			isProduction
-		);
-	}
+//	public NVerseExceptionHandlerFilter<
+//		AsterLogBook,
+//		AsterLog,
+//		AsterAuthenticationLog,
+//		TenantFacade,
+//		USER_ROLE,
+//		AsterUserRole<USER_ROLE>
+//	> nVerseExceptionHandlerFilter(
+//		RainTree rainTree,
+//		AsterCronManager cronManager,
+//		boolean isProduction
+//	) {
+//		return new NVerseExceptionHandlerFilter<>(
+//			rainTree,
+//			cronManager,
+//			isProduction
+//		);
+//	}
 }
