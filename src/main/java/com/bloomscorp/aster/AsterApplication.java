@@ -26,8 +26,7 @@ import java.lang.annotation.Target;
 })
 @Import({
 	AsterConfiguration.class,
-	AsterLaunchSequence1.class,
-	LogJpaRepository.class
+	AsterLaunchSequence1.class
 })
 public @interface AsterApplication {
 }
