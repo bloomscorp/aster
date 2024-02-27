@@ -15,7 +15,7 @@
 
     <groupId>com.bloomscorp</groupId>
     <artifactId>bmx-aster</artifactId>
-    <version>0.0.23</version>
+    <version>0.0.25</version>
     <packaging>jar</packaging>
     <inceptionYear>2023</inceptionYear>
     <url>https://github.com/bloomscorp/bmx-aster</url>
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>com.bloomscorp</groupId>
             <artifactId>bmx-spring-base</artifactId>
-            <version>0.0.70</version>
+            <version>0.0.69</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>

@@ -23,7 +23,7 @@ public abstract class TestLogBook<
 	T,
 	E,
 	R
-	> {
+> {
 
 	public TestLogBook(ILogBookDAO<AsterAuthenticationLog, AsterLog> repository) {
 		super(repository);
