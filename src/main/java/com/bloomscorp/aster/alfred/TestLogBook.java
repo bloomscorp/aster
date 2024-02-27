@@ -3,6 +3,7 @@ package com.bloomscorp.aster.alfred;
 import com.bloomscorp.alfred.LogBook;
 import com.bloomscorp.alfred.adapter.ILogBookDAO;
 import com.bloomscorp.alfred.orm.AUTH_ACTION_ENUM;
+import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.alfred.orm.LOG_TYPE;
 import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
@@ -14,18 +15,19 @@ import com.bloomscorp.nverse.pojo.NVerseTenant;
 import com.bloomscorp.pastebox.Pastebox;
 
 public abstract class TestLogBook<
+	A extends AuthenticationLog,
 	T extends NVerseTenant<E, R>,
 	E extends Enum<E>,
 	R extends NVerseRole<E>
 > extends LogBook<
 	AsterLog,
-	AsterAuthenticationLog,
+	A,
 	T,
 	E,
 	R
 > {
 
-	public TestLogBook(ILogBookDAO<AsterAuthenticationLog, AsterLog> repository) {
+	public TestLogBook(ILogBookDAO<A, AsterLog> repository) {
 		super(repository);
 	}
 

@@ -19,7 +19,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@SuperBuilder
 @MappedSuperclass
 public abstract class TestAuthenticationLog<
 	T extends AsterTenant<E, R>,
@@ -49,7 +48,6 @@ public abstract class TestAuthenticationLog<
 		length = 1
 	)
 	@ColumnDefault("1")
-	@Builder.Default
 	private short attempt = 1;
 
 	@Column(
@@ -57,7 +55,6 @@ public abstract class TestAuthenticationLog<
 		columnDefinition = "TEXT",
 		nullable = false
 	)
-	@Builder.Default
 	@ColumnDefault(Constant.NO_INFORMATION)
 	private String information = Constant.NO_INFORMATION;
 
