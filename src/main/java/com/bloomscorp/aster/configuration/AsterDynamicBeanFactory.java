@@ -1,14 +1,11 @@
 package com.bloomscorp.aster.configuration;
 
 import com.bloomscorp.alfred.LogBook;
-import com.bloomscorp.alfred.cron.CronManager;
 import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.aster.alfred.AsterCronManager;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
-import com.bloomscorp.aster.tenant.orm.TenantFacade;
-import com.bloomscorp.aster.tenant.orm.USER_ROLE;
 import com.bloomscorp.nverse.*;
 import com.bloomscorp.raintree.RainTree;
 import org.springframework.context.annotation.Bean;
