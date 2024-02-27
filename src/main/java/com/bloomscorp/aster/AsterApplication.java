@@ -1,5 +1,6 @@
 package com.bloomscorp.aster;
 
+import com.bloomscorp.aster.alfred.dao.repository.LogJpaRepository;
 import com.bloomscorp.aster.configuration.AsterConfiguration;
 import com.bloomscorp.aster.configuration.AsterLaunchSequence1;
 import com.bloomscorp.bsb.BmxApplication;
@@ -26,6 +27,7 @@ import java.lang.annotation.Target;
 @Import({
 	AsterConfiguration.class,
 	AsterLaunchSequence1.class,
+	LogJpaRepository.class
 })
 public @interface AsterApplication {
 }
