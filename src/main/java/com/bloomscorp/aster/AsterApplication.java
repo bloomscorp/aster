@@ -25,10 +25,6 @@ import java.lang.annotation.Target;
 @BmxApplication(scanBasePackages = {
 	"com.bloomscorp.aster"
 })
-@Controller
-//@SpringBootApplication(scanBasePackages = {
-//	"com.bloomscorp.aster"
-//})
 @EnableJpaRepositories(basePackages = {
 	"com.bloomscorp.aster"
 })
