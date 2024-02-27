@@ -4,24 +4,23 @@ import com.bloomscorp.alfred.contract.AuthenticationLogContract;
 import com.bloomscorp.alfred.orm.AUTH_ACTION_ENUM;
 import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.aster.support.Constant;
-import com.bloomscorp.aster.tenant.orm.TenantFacade;
+import com.bloomscorp.aster.tenant.orm.AsterTenant;
+import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Entity(name = AuthenticationLogContract.TABLE)
-@Table(name = AuthenticationLogContract.TABLE)
-public class AsterAuthenticationLog extends BehemothORM implements AuthenticationLog {
+@Getter
+@Setter
+@MappedSuperclass
+public abstract class AsterAuthenticationLog<
+	T extends AsterTenant<E, R>,
+	E extends Enum<E>,
+	R extends AsterUserRole<E>
+> extends BehemothORM implements AuthenticationLog {
 
 	@Enumerated(EnumType.STRING)
 	@Column(
@@ -31,21 +30,6 @@ public class AsterAuthenticationLog extends BehemothORM implements Authenticatio
 	)
 	@Type(PostgreSQLEnumType.class)
 	private AUTH_ACTION_ENUM action;
-
-	@ToString.Exclude
-	@ManyToOne(
-		targetEntity = TenantFacade.class,
-		fetch = FetchType.EAGER
-	)
-	@JoinColumn(
-		name = AuthenticationLogContract.USER_ID,
-		columnDefinition = "BIGSERIAL",
-		nullable = false,
-		foreignKey = @ForeignKey(
-			name = "fk_user_id"
-		)
-	)
-	private TenantFacade tenant;
 
 	@Column(
 		name = AuthenticationLogContract.TIME,
@@ -60,7 +44,6 @@ public class AsterAuthenticationLog extends BehemothORM implements Authenticatio
 		length = 1
 	)
 	@ColumnDefault("1")
-	@Builder.Default
 	private short attempt = 1;
 
 	@Column(
@@ -68,7 +51,8 @@ public class AsterAuthenticationLog extends BehemothORM implements Authenticatio
 		columnDefinition = "TEXT",
 		nullable = false
 	)
-	@Builder.Default
 	@ColumnDefault(Constant.NO_INFORMATION)
 	private String information = Constant.NO_INFORMATION;
+
+	public abstract T getTenant();
 }

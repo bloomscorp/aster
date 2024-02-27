@@ -1,8 +1,9 @@
 package com.bloomscorp.aster.configuration;
 
+import com.bloomscorp.alfred.LogBook;
+import com.bloomscorp.alfred.cron.CronManager;
+import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.aster.alfred.AsterCronManager;
-import com.bloomscorp.aster.alfred.AsterLogBook;
-import com.bloomscorp.aster.alfred.orm.AsterAuthenticationLog;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
@@ -15,6 +16,9 @@ import org.springframework.context.annotation.Bean;
 import java.security.SecureRandom;
 
 public class AsterDynamicBeanFactory<
+	C extends AsterCronManager<L, A, T, E, R>,
+	L extends LogBook<AsterLog, A, T, E, R>,
+	A extends AuthenticationLog,
 	T extends AsterTenant<E, R>,
 	E extends Enum<E>,
 	R extends AsterUserRole<E>
@@ -52,16 +56,9 @@ public class AsterDynamicBeanFactory<
 	}
 
 	@Bean
-	public NVerseExceptionHandlerFilter<
-		AsterLogBook,
-		AsterLog,
-		AsterAuthenticationLog,
-		TenantFacade,
-		USER_ROLE,
-		AsterUserRole<USER_ROLE>
-	> nVerseExceptionHandlerFilter(
+	public NVerseExceptionHandlerFilter<L, AsterLog, A, T, E, R> nVerseExceptionHandlerFilter(
 		RainTree rainTree,
-		AsterCronManager cronManager
+		C cronManager
 	) {
 		return new NVerseExceptionHandlerFilter<>(
 			rainTree,
