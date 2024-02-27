@@ -19,7 +19,10 @@ import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @MappedSuperclass
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class TestAuthenticationLog<
 	T extends AsterTenant<E, R>,
 	E extends Enum<E>,
