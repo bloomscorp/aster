@@ -64,7 +64,7 @@
         <dependency>
             <groupId>com.bloomscorp</groupId>
             <artifactId>bmx-spring-base</artifactId>
-            <version>0.0.69</version>
+            <version>0.0.70</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
