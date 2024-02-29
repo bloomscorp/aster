@@ -72,4 +72,14 @@ public class AsterDynamicBeanFactory<
 			NVerseAES.SHA512
 		);
 	}
+
+//	@Bean
+//	public NVerseUserDetailsService<LoomTenant, USER_ROLE, UserRole> nVerseUserDetailsService(
+//		NVerseEmailEncoder emailEncoder
+//	) {
+//		return new NVerseUserDetailsService<>(
+//			emailEncoder,
+//			this.tenantDAOController
+//		);
+//	}
 }

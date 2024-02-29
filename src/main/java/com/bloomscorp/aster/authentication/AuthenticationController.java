@@ -1,8 +1,8 @@
 package com.bloomscorp.aster.authentication;
 
-import com.bloomscorp.aster.CRUDController;
+import com.bloomscorp.aster.behemoth.CRUDController;
 
-public abstract class AuthenticationController extends CRUDController {
+public abstract class AuthenticationController {
 
 //	private final AuthenticationManager authenticationManager;
 //	private final NVerseAuthenticationService nVerseService;
