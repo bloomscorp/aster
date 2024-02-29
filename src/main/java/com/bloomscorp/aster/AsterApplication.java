@@ -1,6 +1,5 @@
 package com.bloomscorp.aster;
 
-import com.bloomscorp.aster.alfred.dao.repository.LogJpaRepository;
 import com.bloomscorp.aster.configuration.AsterConfiguration;
 import com.bloomscorp.aster.configuration.AsterLaunchSequence1;
 import com.bloomscorp.bsb.BmxApplication;

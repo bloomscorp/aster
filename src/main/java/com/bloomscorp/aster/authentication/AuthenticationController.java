@@ -1,7 +1,5 @@
 package com.bloomscorp.aster.authentication;
 
-import com.bloomscorp.aster.behemoth.CRUDController;
-
 public abstract class AuthenticationController {
 
 //	private final AuthenticationManager authenticationManager;
