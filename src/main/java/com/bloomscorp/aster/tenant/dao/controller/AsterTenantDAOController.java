@@ -1,6 +1,5 @@
 package com.bloomscorp.aster.tenant.dao.controller;
 
-import com.bloomscorp.aster.tenant.orm.USER_ROLE;
 import com.bloomscorp.behemoth.dao.controller.BehemothCRUDDAOController;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.dao.NVerseTenantDAO;

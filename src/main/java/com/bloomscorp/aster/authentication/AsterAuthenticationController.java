@@ -14,8 +14,6 @@ import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.hastar.AuthorizationException;
 import com.bloomscorp.nverse.*;
 import com.bloomscorp.nverse.pojo.NVERSE_AUTH_PROVIDER;
-import com.bloomscorp.nverse.pojo.NVerseRole;
-import com.bloomscorp.nverse.pojo.NVerseTenant;
 import com.bloomscorp.nverse.sanitizer.HttpRequestDumpSanitizer;
 import com.bloomscorp.pastebox.Pastebox;
 import com.bloomscorp.raintree.RainTree;
@@ -26,8 +24,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import static com.bloomscorp.aster.support.LogMessage.UNAUTH_AUTH_TOKEN_REQUEST;
