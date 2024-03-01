@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-@ConditionalOnMissingBean
 public class AuthorityTokenResponse<R extends AsterUserRole<?>> extends RainResponse<R> {
 
 	public AuthorityTokenResponse(RainTree rainTree) {
