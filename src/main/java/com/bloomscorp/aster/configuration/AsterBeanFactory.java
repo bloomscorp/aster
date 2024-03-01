@@ -119,4 +119,26 @@ public class AsterBeanFactory<
 			tenantDAOController
 		);
 	}
+
+	@Bean
+	public NVerseAuthorityResolver<T, E, R> nVerseAuthorityResolver(
+		NVerseJWTService<T, E, R> jwtService,
+		NVerseUserDetailsService<T, E, R> userDetailsService
+	) {
+		return new NVerseAuthorityResolver<>(
+			jwtService,
+			userDetailsService
+		);
+	}
+
+	@Bean
+	public NVerseRequestFilter<T, E, R> nVerseRequestFilter(
+		NVerseJWTService<T, E, R> jwtService,
+		NVerseUserDetailsService<T, E, R> userDetailsService
+	) {
+		return new NVerseRequestFilter<>(
+			jwtService,
+			userDetailsService
+		);
+	}
 }
