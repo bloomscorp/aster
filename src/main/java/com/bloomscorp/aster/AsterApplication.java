@@ -1,7 +1,6 @@
 package com.bloomscorp.aster;
 
 import com.bloomscorp.aster.configuration.AsterConfiguration;
-import com.bloomscorp.aster.configuration.AsterLaunchSequence1;
 import com.bloomscorp.bsb.BmxApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Import;
@@ -24,8 +23,7 @@ import java.lang.annotation.Target;
 	"com.bloomscorp.aster"
 })
 @Import({
-	AsterConfiguration.class,
-	AsterLaunchSequence1.class
+	AsterConfiguration.class
 })
 public @interface AsterApplication {
 }

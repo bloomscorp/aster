@@ -7,17 +7,15 @@ import com.bloomscorp.aster.alfred.orm.AsterLog;
 import com.bloomscorp.aster.tenant.dao.controller.AsterTenantDAOController;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
-import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.*;
-import com.bloomscorp.nverse.pojo.NVerseRole;
-import com.bloomscorp.nverse.pojo.NVerseTenant;
 import com.bloomscorp.raintree.RainTree;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.security.SecureRandom;
 
-public class AsterDynamicBeanFactory<
+public class AsterBeanFactory<
 	C extends AsterCronManager<L, A, T, E, R>,
 	L extends LogBook<AsterLog, A, T, E, R>,
 	A extends AuthenticationLog,
@@ -31,7 +29,7 @@ public class AsterDynamicBeanFactory<
 	private final String encoderKey;
 	private final boolean isProduction;
 
-	public AsterDynamicBeanFactory(
+	public AsterBeanFactory(
 		String pepper,
 		String jwtSecret,
 		String encoderKey,
@@ -41,6 +39,36 @@ public class AsterDynamicBeanFactory<
 		this.jwtSecret = jwtSecret;
 		this.encoderKey = encoderKey;
 		this.isProduction = isProduction;
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	public NVerseAuthenticationEntryPoint authenticationEntryPoint() {
+		return new NVerseAuthenticationEntryPoint();
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	public NVerseHttpRequestFilter requestFilter() {
+		return new NVerseHttpRequestFilter();
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	public NVerseCORSConfigurationSource nVerseCORSConfigurationSource() {
+		return new NVerseCORSConfigurationSource();
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	public NVerseEmailValidator nVerseEmailValidator() {
+		return new NVerseEmailValidator();
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	public NVerseAuthenticationService nVerseAuthenticationService() {
+		return new NVerseAuthenticationService();
 	}
 
 	@Bean
