@@ -72,11 +72,13 @@ public class AsterBeanFactory<
 	}
 
 	@Bean
+	@ConditionalOnMissingBean
 	public NVerseJWTService<T, E, R> nVerseJWTService() {
 		return new NVerseJWTService<>(this.jwtSecret);
 	}
 
 	@Bean
+	@ConditionalOnMissingBean
 	public NVersePasswordEncoder nVersePasswordEncoder() {
 		return new NVersePasswordEncoder(
 			11,
@@ -86,6 +88,7 @@ public class AsterBeanFactory<
 	}
 
 	@Bean
+	@ConditionalOnMissingBean
 	public NVerseExceptionHandlerFilter<L, AsterLog, A, T, E, R> nVerseExceptionHandlerFilter(
 		RainTree rainTree,
 		C cronManager
@@ -98,6 +101,7 @@ public class AsterBeanFactory<
 	}
 
 	@Bean
+	@ConditionalOnMissingBean
 	public NVerseEmailEncoder emailEncoder(NVerseEmailValidator emailValidator) {
 		return new NVerseEmailEncoder(
 			encoderKey,
@@ -107,6 +111,7 @@ public class AsterBeanFactory<
 	}
 
 	@Bean
+	@ConditionalOnMissingBean
 	public <
 		J extends JpaRepository<T, Long>,
 		D extends AsterTenantDAOController<T, J, T, E, R>
@@ -121,6 +126,7 @@ public class AsterBeanFactory<
 	}
 
 	@Bean
+	@ConditionalOnMissingBean
 	public NVerseAuthorityResolver<T, E, R> nVerseAuthorityResolver(
 		NVerseJWTService<T, E, R> jwtService,
 		NVerseUserDetailsService<T, E, R> userDetailsService
@@ -132,6 +138,7 @@ public class AsterBeanFactory<
 	}
 
 	@Bean
+	@ConditionalOnMissingBean
 	public NVerseRequestFilter<T, E, R> nVerseRequestFilter(
 		NVerseJWTService<T, E, R> jwtService,
 		NVerseUserDetailsService<T, E, R> userDetailsService
