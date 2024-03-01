@@ -5,6 +5,7 @@ import com.bloomscorp.alfred.cron.CronManager;
 import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
 import com.bloomscorp.aster.behemoth.AsterCRUDController;
+import com.bloomscorp.aster.nverse.service.AsterAuth0Service;
 import com.bloomscorp.aster.restful.AuthorityTokenResponse;
 import com.bloomscorp.aster.tenant.dao.controller.AsterTenantDAOController;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
@@ -26,7 +27,8 @@ public abstract class AsterAuthenticationController<
 	R extends AsterUserRole<E>,
 	C extends CronManager<B, AsterLog, A, T, E, R>,
 	J extends JpaRepository<T, Long>,
-	D extends AsterTenantDAOController<T, J, T, E, R>
+	D extends AsterTenantDAOController<T, J, T, E, R>,
+	O extends AsterAuth0Service
 > extends AsterCRUDController<B, A, T, E, R, C> {
 
 	private final AuthenticationManager authenticationManager;
@@ -35,7 +37,7 @@ public abstract class AsterAuthenticationController<
 	private final NVerseJWTService<T, E, R> jwtService;
 	private final C cron;
 	private final AuthorityTokenResponse<R> response;
-	private final Auth0Service auth0;
+	private final O auth0;
 	private final D daoController;
 	private final PasswordEncoder passwordEncoder;
 
@@ -52,7 +54,8 @@ public abstract class AsterAuthenticationController<
 		NVerseJWTService<T, E, R> jwtService,
 		D daoController,
 		PasswordEncoder passwordEncoder,
-		AuthorityTokenResponse<R> response
+		AuthorityTokenResponse<R> response,
+		O auth0
 	) {
 		super(
 			rainTree,
@@ -70,5 +73,6 @@ public abstract class AsterAuthenticationController<
 		this.daoController = daoController;
 		this.passwordEncoder = passwordEncoder;
 		this.response = response;
+		this.auth0 = auth0;
 	}
 }
