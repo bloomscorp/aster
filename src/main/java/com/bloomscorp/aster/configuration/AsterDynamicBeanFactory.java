@@ -4,11 +4,16 @@ import com.bloomscorp.alfred.LogBook;
 import com.bloomscorp.alfred.orm.AuthenticationLog;
 import com.bloomscorp.aster.alfred.AsterCronManager;
 import com.bloomscorp.aster.alfred.orm.AsterLog;
+import com.bloomscorp.aster.tenant.dao.controller.AsterTenantDAOController;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
+import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.*;
+import com.bloomscorp.nverse.pojo.NVerseRole;
+import com.bloomscorp.nverse.pojo.NVerseTenant;
 import com.bloomscorp.raintree.RainTree;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.security.SecureRandom;
 
@@ -73,13 +78,17 @@ public class AsterDynamicBeanFactory<
 		);
 	}
 
-//	@Bean
-//	public NVerseUserDetailsService<LoomTenant, USER_ROLE, UserRole> nVerseUserDetailsService(
-//		NVerseEmailEncoder emailEncoder
-//	) {
-//		return new NVerseUserDetailsService<>(
-//			emailEncoder,
-//			this.tenantDAOController
-//		);
-//	}
+	@Bean
+	public <
+		J extends JpaRepository<T, Long>,
+		D extends AsterTenantDAOController<T, J, T, E, R>
+	> NVerseUserDetailsService<T, E, R> nVerseUserDetailsService(
+		NVerseEmailEncoder emailEncoder,
+		D tenantDAOController
+	) {
+		return new NVerseUserDetailsService<>(
+			emailEncoder,
+			tenantDAOController
+		);
+	}
 }

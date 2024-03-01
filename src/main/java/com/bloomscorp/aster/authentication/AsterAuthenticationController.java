@@ -1,6 +1,6 @@
 package com.bloomscorp.aster.authentication;
 
-public abstract class AuthenticationController {
+public abstract class AsterAuthenticationController {
 
 //	private final AuthenticationManager authenticationManager;
 //	private final NVerseAuthenticationService nVerseService;
