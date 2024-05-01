@@ -9,9 +9,14 @@ import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.*;
 import com.bloomscorp.raintree.RainTree;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 import java.security.SecureRandom;
 
@@ -28,16 +33,19 @@ public class AsterBeanFactory<
 	private final String jwtSecret;
 	private final String encoderKey;
 	private final boolean isProduction;
+	private final String uiOrigins;
 
 	public AsterBeanFactory(
 		String pepper,
 		String jwtSecret,
 		String encoderKey,
+		String uiOrigins,
 		boolean isProduction
 	) {
 		this.pepper = pepper;
 		this.jwtSecret = jwtSecret;
 		this.encoderKey = encoderKey;
+		this.uiOrigins = uiOrigins;
 		this.isProduction = isProduction;
 	}
 
@@ -73,6 +81,14 @@ public class AsterBeanFactory<
 
 	@Bean
 	@ConditionalOnMissingBean
+	public AuthenticationManager authenticationManager(
+		@NotNull AuthenticationConfiguration authenticationConfiguration
+	) throws Exception {
+		return authenticationConfiguration.getAuthenticationManager();
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
 	public NVerseJWTService<T, E, R> nVerseJWTService() {
 		return new NVerseJWTService<>(this.jwtSecret);
 	}
@@ -85,6 +101,14 @@ public class AsterBeanFactory<
 			new SecureRandom(),
 			this.pepper
 		);
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	public CorsConfigurationSource corsConfigurationSource(
+		NVerseCORSConfigurationSource corsConfigurationSource
+	) {
+		return corsConfigurationSource.source(this.uiOrigins);
 	}
 
 	@Bean
