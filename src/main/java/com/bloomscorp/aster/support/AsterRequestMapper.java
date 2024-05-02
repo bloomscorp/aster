@@ -5,6 +5,7 @@ public final class AsterRequestMapper {
 	public static final String ROOT_URL = "/";
 	public static final String PING = "/ping";
 	public static final String ERROR = "/error";
+	public static final String POST_ANT_MATCHER = "/post/**";
 	public static final String EMAIL_AUTHENTICATION_URL = "/authenticate/email";
 	public static final String SOCIAL_AUTHENTICATION_URL = "/authenticate/social";
 	public static final String GET_AUTHORITY_TOKEN = "/get/authority/token";
