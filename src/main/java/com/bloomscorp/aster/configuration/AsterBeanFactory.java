@@ -75,20 +75,6 @@ public class AsterBeanFactory<
 
 	@Bean
 	@ConditionalOnMissingBean
-	public NVerseAuthenticationService nVerseAuthenticationService() {
-		return new NVerseAuthenticationService();
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public AuthenticationManager authenticationManager(
-		@NotNull AuthenticationConfiguration authenticationConfiguration
-	) throws Exception {
-		return authenticationConfiguration.getAuthenticationManager();
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
 	public NVerseJWTService<T, E, R> nVerseJWTService() {
 		return new NVerseJWTService<>(this.jwtSecret);
 	}
@@ -101,14 +87,6 @@ public class AsterBeanFactory<
 			new SecureRandom(),
 			this.pepper
 		);
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public CorsConfigurationSource corsConfigurationSource(
-		NVerseCORSConfigurationSource corsConfigurationSource
-	) {
-		return corsConfigurationSource.source(this.uiOrigins);
 	}
 
 	@Bean
@@ -126,6 +104,12 @@ public class AsterBeanFactory<
 
 	@Bean
 	@ConditionalOnMissingBean
+	public NVerseAuthenticationService nVerseAuthenticationService() {
+		return new NVerseAuthenticationService();
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
 	public NVerseEmailEncoder emailEncoder(NVerseEmailValidator emailValidator) {
 		return new NVerseEmailEncoder(
 			encoderKey,
@@ -134,20 +118,44 @@ public class AsterBeanFactory<
 		);
 	}
 
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public <
+//		J extends JpaRepository<T, Long>,
+//		D extends AsterTenantDAOController<T, J, T, E, R>
+//		> NVerseUserDetailsService<T, E, R> nVerseUserDetailsService(
+//		NVerseEmailEncoder emailEncoder,
+//		D tenantDAOController
+//	) {
+//		return new NVerseUserDetailsService<>(
+//			emailEncoder,
+//			tenantDAOController
+//		);
+//	}
+
+
+
+
+
 	@Bean
 	@ConditionalOnMissingBean
-	public <
-		J extends JpaRepository<T, Long>,
-		D extends AsterTenantDAOController<T, J, T, E, R>
-	> NVerseUserDetailsService<T, E, R> nVerseUserDetailsService(
-		NVerseEmailEncoder emailEncoder,
-		D tenantDAOController
-	) {
-		return new NVerseUserDetailsService<>(
-			emailEncoder,
-			tenantDAOController
-		);
+	public AuthenticationManager authenticationManager(
+		@NotNull AuthenticationConfiguration authenticationConfiguration
+	) throws Exception {
+		return authenticationConfiguration.getAuthenticationManager();
 	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	public CorsConfigurationSource corsConfigurationSource(
+		NVerseCORSConfigurationSource corsConfigurationSource
+	) {
+		return corsConfigurationSource.source(this.uiOrigins);
+	}
+
+
+
+
 
 	@Bean
 	@ConditionalOnMissingBean
