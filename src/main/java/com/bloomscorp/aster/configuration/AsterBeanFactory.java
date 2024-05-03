@@ -49,75 +49,75 @@ public class AsterBeanFactory<
 		this.isProduction = isProduction;
 	}
 
-	@Bean
-	@ConditionalOnMissingBean
-	public NVerseAuthenticationEntryPoint authenticationEntryPoint() {
-		return new NVerseAuthenticationEntryPoint();
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public NVerseHttpRequestFilter requestFilter() {
-		return new NVerseHttpRequestFilter();
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public NVerseCORSConfigurationSource nVerseCORSConfigurationSource() {
-		return new NVerseCORSConfigurationSource();
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public NVerseEmailValidator nVerseEmailValidator() {
-		return new NVerseEmailValidator();
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public NVerseJWTService<T, E, R> nVerseJWTService() {
-		return new NVerseJWTService<>(this.jwtSecret);
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public NVersePasswordEncoder nVersePasswordEncoder() {
-		return new NVersePasswordEncoder(
-			11,
-			new SecureRandom(),
-			this.pepper
-		);
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public NVerseExceptionHandlerFilter<L, AsterLog, A, T, E, R> nVerseExceptionHandlerFilter(
-		RainTree rainTree,
-		C cronManager
-	) {
-		return new NVerseExceptionHandlerFilter<>(
-			rainTree,
-			cronManager,
-			this.isProduction
-		);
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public NVerseAuthenticationService nVerseAuthenticationService() {
-		return new NVerseAuthenticationService();
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public NVerseEmailEncoder emailEncoder(NVerseEmailValidator emailValidator) {
-		return new NVerseEmailEncoder(
-			encoderKey,
-			emailValidator,
-			NVerseAES.SHA512
-		);
-	}
-
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVerseAuthenticationEntryPoint authenticationEntryPoint() {
+//		return new NVerseAuthenticationEntryPoint();
+//	}
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVerseHttpRequestFilter requestFilter() {
+//		return new NVerseHttpRequestFilter();
+//	}
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVerseCORSConfigurationSource nVerseCORSConfigurationSource() {
+//		return new NVerseCORSConfigurationSource();
+//	}
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVerseEmailValidator nVerseEmailValidator() {
+//		return new NVerseEmailValidator();
+//	}
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVerseJWTService<T, E, R> nVerseJWTService() {
+//		return new NVerseJWTService<>(this.jwtSecret);
+//	}
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVersePasswordEncoder nVersePasswordEncoder() {
+//		return new NVersePasswordEncoder(
+//			11,
+//			new SecureRandom(),
+//			this.pepper
+//		);
+//	}
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVerseExceptionHandlerFilter<L, AsterLog, A, T, E, R> nVerseExceptionHandlerFilter(
+//		RainTree rainTree,
+//		C cronManager
+//	) {
+//		return new NVerseExceptionHandlerFilter<>(
+//			rainTree,
+//			cronManager,
+//			this.isProduction
+//		);
+//	}
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVerseAuthenticationService nVerseAuthenticationService() {
+//		return new NVerseAuthenticationService();
+//	}
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVerseEmailEncoder emailEncoder(NVerseEmailValidator emailValidator) {
+//		return new NVerseEmailEncoder(
+//			encoderKey,
+//			emailValidator,
+//			NVerseAES.SHA512
+//		);
+//	}
+//
 //	@Bean
 //	@ConditionalOnMissingBean
 //	public <
@@ -132,52 +132,52 @@ public class AsterBeanFactory<
 //			tenantDAOController
 //		);
 //	}
-
-
-
-
-
-	@Bean
-	@ConditionalOnMissingBean
-	public AuthenticationManager authenticationManager(
-		@NotNull AuthenticationConfiguration authenticationConfiguration
-	) throws Exception {
-		return authenticationConfiguration.getAuthenticationManager();
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public CorsConfigurationSource corsConfigurationSource(
-		NVerseCORSConfigurationSource corsConfigurationSource
-	) {
-		return corsConfigurationSource.source(this.uiOrigins);
-	}
-
-
-
-
-
-	@Bean
-	@ConditionalOnMissingBean
-	public NVerseAuthorityResolver<T, E, R> nVerseAuthorityResolver(
-		NVerseJWTService<T, E, R> jwtService,
-		NVerseUserDetailsService<T, E, R> userDetailsService
-	) {
-		return new NVerseAuthorityResolver<>(
-			jwtService,
-			userDetailsService
-		);
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public NVerseRequestFilter<T, E, R> nVerseRequestFilter(
-		NVerseJWTService<T, E, R> jwtService,
-		NVerseUserDetailsService<T, E, R> userDetailsService
-	) {
-		return new NVerseRequestFilter<>(
-			jwtService,
-			userDetailsService
-		);
-	}
+//
+//
+//
+//
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public AuthenticationManager authenticationManager(
+//		@NotNull AuthenticationConfiguration authenticationConfiguration
+//	) throws Exception {
+//		return authenticationConfiguration.getAuthenticationManager();
+//	}
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public CorsConfigurationSource corsConfigurationSource(
+//		NVerseCORSConfigurationSource corsConfigurationSource
+//	) {
+//		return corsConfigurationSource.source(this.uiOrigins);
+//	}
+//
+//
+//
+//
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVerseAuthorityResolver<T, E, R> nVerseAuthorityResolver(
+//		NVerseJWTService<T, E, R> jwtService,
+//		NVerseUserDetailsService<T, E, R> userDetailsService
+//	) {
+//		return new NVerseAuthorityResolver<>(
+//			jwtService,
+//			userDetailsService
+//		);
+//	}
+//
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public NVerseRequestFilter<T, E, R> nVerseRequestFilter(
+//		NVerseJWTService<T, E, R> jwtService,
+//		NVerseUserDetailsService<T, E, R> userDetailsService
+//	) {
+//		return new NVerseRequestFilter<>(
+//			jwtService,
+//			userDetailsService
+//		);
+//	}
 }
