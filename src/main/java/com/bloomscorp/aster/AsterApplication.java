@@ -15,9 +15,9 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@BmxApplication(scanBasePackages = {
-	"com.bloomscorp.aster"
-})
+//@BmxApplication(scanBasePackages = {
+//	"com.bloomscorp.aster"
+//})
 @EnableJpaRepositories(basePackages = {
 	"com.bloomscorp.aster"
 })
@@ -25,9 +25,10 @@ import java.lang.annotation.Target;
 	"com.bloomscorp.aster"
 })
 @Controller
-@SpringBootApplication(scanBasePackages = {
-	"com.bloomscorp.aster"
-})
+//@SpringBootApplication(scanBasePackages = {
+//	"com.bloomscorp.aster"
+//})
+@SpringBootApplication
 @Import({
 	AsterConfiguration.class
 })
