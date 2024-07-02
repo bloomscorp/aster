@@ -133,10 +133,6 @@ public class AsterBeanFactory<
 		);
 	}
 
-
-
-
-
 	@Bean
 	@ConditionalOnMissingBean
 	public AuthenticationManager authenticationManager(
@@ -152,10 +148,6 @@ public class AsterBeanFactory<
 	) {
 		return corsConfigurationSource.source(this.uiOrigins);
 	}
-
-
-
-
 
 	@Bean
 	@ConditionalOnMissingBean
