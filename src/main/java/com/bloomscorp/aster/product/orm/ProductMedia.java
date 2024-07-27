@@ -1,4 +1,4 @@
 package com.bloomscorp.aster.product.orm;
 
-public class Product {
+public class ProductMedia {
 }
