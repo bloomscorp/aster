@@ -12,7 +12,7 @@ import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextFi
 @Getter
 @Setter
 @MappedSuperclass
-public class AsterProduct extends BehemothORM {
+public abstract class AsterProduct extends BehemothORM {
 
 	@Column(
 		name = ProductContract.NAME,
@@ -65,6 +65,14 @@ public class AsterProduct extends BehemothORM {
 	private String description;
 
 	@Column(
+		name = ProductContract.CARE,
+		nullable = false,
+		columnDefinition = "TEXT"
+	)
+	@FullTextField
+	private String care;
+
+	@Column(
 		name = ProductContract.SALE,
 		columnDefinition = "BOOLEAN"
 	)
@@ -77,4 +85,12 @@ public class AsterProduct extends BehemothORM {
 	)
 	@ColumnDefault("0.00")
 	private double discount = 0.00;
+
+	@Column(
+		name = ProductContract.DISABLED,
+		nullable = false,
+		columnDefinition = "BOOLEAN"
+	)
+	@ColumnDefault("false")
+	private boolean disabled = false;
 }
