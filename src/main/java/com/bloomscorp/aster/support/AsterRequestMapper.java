@@ -16,5 +16,8 @@ public final class AsterRequestMapper {
 	public static final String SEND_PASSWORD_RESET_EMAIL = "/send/password-reset/email";
 	public static final String RESET_PASSWORD = "/reset/password";
 
+	/*-- PRODUCT --*/
+	public static final String GET_PRODUCT_LIST = "/get/product-list";
+
 	private AsterRequestMapper() {}
 }
