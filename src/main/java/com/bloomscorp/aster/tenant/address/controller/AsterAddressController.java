@@ -27,7 +27,7 @@ public abstract class AsterAddressController<
         J extends AsterAddressJpaRepository<E, R, T, AD>
         > extends AsterCRUDController<B, A, T, E, R, C> {
 
-    public final AsterAddressResponse<AD, E, R, T> response;
+    public final AsterAddressResponse<E, R, T, AD> response;
     private final AsterAddressDAOController<E, R, T, AD, J> daoController;
 
     public AsterAddressController(
@@ -38,7 +38,7 @@ public abstract class AsterAddressController<
             NVerseAuthorityResolver<T, E, R> authorityResolver,
             HttpRequestDumpSanitizer httpRequestDumpSanitizer,
             AsterAddressDAOController<E, R, T, AD, J> daoController,
-            AsterAddressResponse<AD, E, R, T> response
+            AsterAddressResponse<E, R, T, AD> response
     ) {
         super(
                 rainTree,

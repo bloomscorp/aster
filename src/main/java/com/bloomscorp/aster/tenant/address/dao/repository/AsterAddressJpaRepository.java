@@ -2,7 +2,6 @@ package com.bloomscorp.aster.tenant.address.dao.repository;
 
 import com.bloomscorp.aster.tenant.address.orm.AsterAddress;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
-import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import org.springframework.data.jpa.repository.JpaRepository;
 
