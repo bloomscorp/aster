@@ -15,7 +15,7 @@ import org.hibernate.annotations.Type;
 
 @Getter
 @MappedSuperclass
-public abstract class Address<
+public abstract class AsterAddress<
 	E extends Enum<E>,
 	R extends AsterUserRole<E>,
 	T extends NVerseTenant<E, R>
