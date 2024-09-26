@@ -1,6 +1,7 @@
 package com.bloomscorp.aster.restful;
 
 import com.bloomscorp.aster.order.orm.AsterOrder;
+import com.bloomscorp.aster.support.ResponseParameter;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import com.bloomscorp.raintree.RainTree;
@@ -20,12 +21,12 @@ public class AsterOrderResponse<
     }
 
     @Override
-    public String buildEntity(O a) {
-        return "";
+    public String buildEntity(O o) {
+        return this.prepareEntity(o, ResponseParameter.ORDER);
     }
 
     @Override
     public String buildList(List<O> list) {
-        return "";
+        return this.prepareList(list, ResponseParameter.ORDER_LIST);
     }
 }

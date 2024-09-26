@@ -1,6 +1,6 @@
 package com.bloomscorp.aster.product.contract;
 
-public final class ProductContract {
+public final class AsterProductContract {
 
 	public final static String TABLE = "product";
 	public final static String NAME = "name";
@@ -14,6 +14,6 @@ public final class ProductContract {
 	public final static String DISCOUNT = "discount";
 	public final static String DISABLED = "disabled";
 
-	private ProductContract() {
+	private AsterProductContract() {
 	}
 }
