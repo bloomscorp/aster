@@ -1,6 +1,6 @@
 package com.bloomscorp.aster.product.orm;
 
-import com.bloomscorp.aster.product.contract.ProductContract;
+import com.bloomscorp.aster.product.contract.AsterProductContract;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
@@ -15,21 +15,21 @@ import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextFi
 public abstract class AsterProduct extends BehemothORM {
 
 	@Column(
-		name = ProductContract.NAME,
+		name = AsterProductContract.NAME,
 		nullable = false,
 		columnDefinition = "TEXT"
 	)
 	private String name;
 
 	@Column(
-		name = ProductContract.SLUG,
+		name = AsterProductContract.SLUG,
 		nullable = false,
 		columnDefinition = "TEXT"
 	)
 	private String slug;
 
 	@Column(
-		name = ProductContract.SKU,
+		name = AsterProductContract.SKU,
 		nullable = false,
 		columnDefinition = "VARCHAR",
 		length = 25
@@ -37,7 +37,7 @@ public abstract class AsterProduct extends BehemothORM {
 	private String sku;
 
 	@Column(
-		name = ProductContract.PRICE,
+		name = AsterProductContract.PRICE,
 		nullable = false,
 		columnDefinition = "DECIMAL",
 		precision = 8,
@@ -47,7 +47,7 @@ public abstract class AsterProduct extends BehemothORM {
 	private double price = 0.00;
 
 	@Column(
-		name = ProductContract.QUANTITY,
+		name = AsterProductContract.QUANTITY,
 		nullable = false,
 		columnDefinition = "DECIMAL",
 		precision = 8,
@@ -57,7 +57,7 @@ public abstract class AsterProduct extends BehemothORM {
 	private Double quantity = 0.00;
 
 	@Column(
-		name = ProductContract.DESCRIPTION,
+		name = AsterProductContract.DESCRIPTION,
 		nullable = false,
 		columnDefinition = "TEXT"
 	)
@@ -65,7 +65,7 @@ public abstract class AsterProduct extends BehemothORM {
 	private String description;
 
 	@Column(
-		name = ProductContract.CARE,
+		name = AsterProductContract.CARE,
 		nullable = false,
 		columnDefinition = "TEXT"
 	)
@@ -73,21 +73,21 @@ public abstract class AsterProduct extends BehemothORM {
 	private String care;
 
 	@Column(
-		name = ProductContract.SALE,
+		name = AsterProductContract.SALE,
 		columnDefinition = "BOOLEAN"
 	)
 	@ColumnDefault("FALSE")
 	private boolean sale = false;
 
 	@Column(
-		name = ProductContract.DISCOUNT,
+		name = AsterProductContract.DISCOUNT,
 		columnDefinition = "NUMERIC"
 	)
 	@ColumnDefault("0.00")
 	private double discount = 0.00;
 
 	@Column(
-		name = ProductContract.DISABLED,
+		name = AsterProductContract.DISABLED,
 		nullable = false,
 		columnDefinition = "BOOLEAN"
 	)
