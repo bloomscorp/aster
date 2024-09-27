@@ -1,6 +1,6 @@
 package com.bloomscorp.aster.cart.orm;
 
-import com.bloomscorp.aster.cart.contract.AsterCartContract;
+import com.bloomscorp.aster.cart.contract.AsterCartItemContract;
 import com.bloomscorp.aster.product.orm.AsterProduct;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.behemoth.orm.BehemothORM;
@@ -26,7 +26,7 @@ public abstract class AsterCartItem<
 	public abstract P getProduct();
 	
 	@Column(
-		name = AsterCartContract.QUANTITY,
+		name = AsterCartItemContract.QUANTITY,
 		nullable = false,
 		columnDefinition = "DECIMAL",
 		precision = 8,
@@ -36,13 +36,13 @@ public abstract class AsterCartItem<
 	private Double quantity = 0.00;
 	
 	@Column(
-		name = AsterCartContract.CREATED_AT,
+		name = AsterCartItemContract.CREATED_AT,
 		nullable = false
 	)
 	private Long createdAt;
 	
 	@Column(
-		name = AsterCartContract.UPDATED_AT
+		name = AsterCartItemContract.UPDATED_AT
 	)
 	private Long updatedAt;
 	
