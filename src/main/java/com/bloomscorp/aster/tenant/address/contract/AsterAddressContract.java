@@ -1,6 +1,6 @@
 package com.bloomscorp.aster.tenant.address.contract;
 
-public class AddressContract {
+public class AsterAddressContract {
 
     public final static String TABLE = "address";
     public final static String TENANT_ID = "tenant_id";
@@ -17,6 +17,6 @@ public class AddressContract {
     public final static String ADDRESS_TYPE = "address_type";
     public final static String DEFAULT_ADDRESS = "default_address";
 
-    private AddressContract() {
+    private AsterAddressContract() {
     }
 }

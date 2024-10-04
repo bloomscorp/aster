@@ -1,6 +1,6 @@
 package com.bloomscorp.aster.tenant.address.orm;
 
-import com.bloomscorp.aster.tenant.address.contract.AddressContract;
+import com.bloomscorp.aster.tenant.address.contract.AsterAddressContract;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
@@ -24,7 +24,7 @@ public abstract class AsterAddress<
 	public abstract T getTenant();
 
 	@Column(
-		name = AddressContract.NAME,
+		name = AsterAddressContract.NAME,
 		columnDefinition = "VARCHAR",
 		nullable = false,
 		length = 150
@@ -32,7 +32,7 @@ public abstract class AsterAddress<
 	public String name;
 
 	@Column(
-		name = AddressContract.PRIMARY_PHONE,
+		name = AsterAddressContract.PRIMARY_PHONE,
 		columnDefinition = "VARCHAR",
 		nullable = false,
 		length = 20
@@ -40,7 +40,7 @@ public abstract class AsterAddress<
 	public String primaryPhone;
 
 	@Column(
-		name = AddressContract.ALTERNATE_PHONE,
+		name = AsterAddressContract.ALTERNATE_PHONE,
 		columnDefinition = "VARCHAR",
 		nullable = false,
 		length = 20
@@ -49,14 +49,14 @@ public abstract class AsterAddress<
 	public String alternatePhone = "";
 
 	@Column(
-		name = AddressContract.ADDRESS_LINE_ONE,
+		name = AsterAddressContract.ADDRESS_LINE_ONE,
 		columnDefinition = "TEXT",
 		nullable = false
 	)
 	public String addressLine1;
 
 	@Column(
-		name = AddressContract.ADDRESS_LINE_TWO,
+		name = AsterAddressContract.ADDRESS_LINE_TWO,
 		columnDefinition = "TEXT",
 		nullable = false
 	)
@@ -64,7 +64,7 @@ public abstract class AsterAddress<
 	public String addressLine2 = "";
 
 	@Column(
-		name = AddressContract.LANDMARK,
+		name = AsterAddressContract.LANDMARK,
 		columnDefinition = "VARCHAR",
 		nullable = false
 	)
@@ -72,7 +72,7 @@ public abstract class AsterAddress<
 	public String landmark = "";
 
 	@Column(
-		name = AddressContract.POSTAL_CODE,
+		name = AsterAddressContract.POSTAL_CODE,
 		columnDefinition = "VARCHAR",
 		nullable = false,
 		length = 10
@@ -80,7 +80,7 @@ public abstract class AsterAddress<
 	public String postalCode;
 
 	@Column(
-		name = AddressContract.CITY,
+		name = AsterAddressContract.CITY,
 		columnDefinition = "VARCHAR",
 		nullable = false,
 		length = 100
@@ -88,7 +88,7 @@ public abstract class AsterAddress<
 	public String city;
 
 	@Column(
-		name = AddressContract.STATE,
+		name = AsterAddressContract.STATE,
 		columnDefinition = "VARCHAR",
 		nullable = false,
 		length = 100
@@ -96,7 +96,7 @@ public abstract class AsterAddress<
 	public String state;
 
 	@Column(
-		name = AddressContract.COUNTRY,
+		name = AsterAddressContract.COUNTRY,
 		columnDefinition = "VARCHAR",
 		nullable = false,
 		length = 100
@@ -106,7 +106,7 @@ public abstract class AsterAddress<
 	// TODO: create a "address_type_enum" at the database level
 	@Enumerated(EnumType.STRING)
 	@Column(
-		name = AddressContract.ADDRESS_TYPE,
+		name = AsterAddressContract.ADDRESS_TYPE,
 		columnDefinition = "address_type_enum",
 		nullable = false
 	)
@@ -115,7 +115,7 @@ public abstract class AsterAddress<
 	public ADDRESS_TYPE addressType = ADDRESS_TYPE.PERMANENT;
 
 	@Column(
-		name = AddressContract.DEFAULT_ADDRESS,
+		name = AsterAddressContract.DEFAULT_ADDRESS,
 		columnDefinition = "BOOLEAN",
 		nullable = false
 	)
