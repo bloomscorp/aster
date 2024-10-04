@@ -27,5 +27,16 @@ public final class ResponseParameter {
 	public static final String CART = "cart";
 	public static final String CART_LIST = "cartList";
 
+	public static final String CATEGORY = "category";
+	public static final String CATEGORY_LIST = "categoryList";
+
+	/*-- PRODUCT SUB-CATEGORY --*/
+	public static final String SUB_CATEGORY = "subCategory";
+	public static final String SUB_CATEGORY_LIST = "subCategoryList";
+
+	/*-- PRODUCT COLLECTION --*/
+	public static final String PRODUCT_COLLECTION = "collection";
+	public static final String PRODUCT_COLLECTION_LIST = "collectionList";
+
 	private ResponseParameter() {}
 }

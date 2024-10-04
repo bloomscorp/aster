@@ -1,6 +1,9 @@
 package com.bloomscorp.aster.product.orm;
 
+import com.bloomscorp.aster.product.category.orm.AsterProductCategory;
+import com.bloomscorp.aster.product.collection.orm.AsterProductCollection;
 import com.bloomscorp.aster.product.contract.AsterProductContract;
+import com.bloomscorp.aster.product.subcategory.orm.AsterProductSubCategory;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
@@ -12,7 +15,20 @@ import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextFi
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class AsterProduct extends BehemothORM {
+public abstract class AsterProduct<
+		CA extends AsterProductCategory,
+		SCA extends AsterProductSubCategory<CA>,
+		CO extends AsterProductCollection
+		> extends BehemothORM {
+
+	public abstract CA getCategory();
+	public abstract void setCategory(CA category);
+
+	public abstract SCA getSubCategory();
+	public abstract void setSubCategory(SCA subCategory);
+
+	public abstract CO getCollection();
+	public abstract void setCollection(CO collection);
 
 	@Column(
 		name = AsterProductContract.NAME,
