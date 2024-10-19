@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @MappedSuperclass
-public abstract class SuperUser<
+public abstract class AsterSuperUser<
 	E extends Enum<E>,
 	R extends AsterUserRole<E>,
 	T extends AsterTenant<E, R>
