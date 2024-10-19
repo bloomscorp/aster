@@ -6,10 +6,12 @@ import com.bloomscorp.aster.product.category.orm.AsterProductCategory;
 import com.bloomscorp.aster.product.collection.orm.AsterProductCollection;
 import com.bloomscorp.aster.product.orm.AsterProduct;
 import com.bloomscorp.aster.product.subcategory.orm.AsterProductSubCategory;
+import com.bloomscorp.aster.support.AsterExclude;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+@AsterExclude
 public interface AsterCartJpaRepository<
     E extends Enum<E>,
     R extends AsterUserRole<E>,
