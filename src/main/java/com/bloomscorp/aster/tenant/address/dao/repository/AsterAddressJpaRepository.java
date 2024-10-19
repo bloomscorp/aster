@@ -1,5 +1,6 @@
 package com.bloomscorp.aster.tenant.address.dao.repository;
 
+import com.bloomscorp.aster.support.AsterExclude;
 import com.bloomscorp.aster.tenant.address.orm.AsterAddress;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
@@ -7,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+@AsterExclude
 public interface AsterAddressJpaRepository<
         E extends Enum<E>,
         R extends AsterUserRole<E>,
