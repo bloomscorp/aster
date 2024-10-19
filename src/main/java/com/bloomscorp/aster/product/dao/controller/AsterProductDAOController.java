@@ -25,4 +25,8 @@ public abstract class AsterProductDAOController<
         List<P> products = this.getRepository().findAll();
         return products;
     }
+
+    public P retrieveProductBySlug(String slug) {
+        return this.getRepository().findProductBySlug(slug);
+    }
 }
