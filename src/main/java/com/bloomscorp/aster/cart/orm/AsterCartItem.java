@@ -23,6 +23,7 @@ public abstract class AsterCartItem<
     > extends BehemothORM {
 
     public abstract P getProduct();
+    public abstract void setProduct(P product);
 
     @Column(
         name = AsterCartItemContract.QUANTITY,
