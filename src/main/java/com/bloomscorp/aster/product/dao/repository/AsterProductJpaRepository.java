@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @AsterExclude
 public interface AsterProductJpaRepository<
         CA extends AsterProductCategory,
-        SCA extends AsterProductSubCategory<CA>,
+        SCA extends AsterProductSubCategory,
         CO extends AsterProductCollection,
         P extends AsterProduct<CA, SCA, CO>
         > extends JpaRepository<P, Long> {

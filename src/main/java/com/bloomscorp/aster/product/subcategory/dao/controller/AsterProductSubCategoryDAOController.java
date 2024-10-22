@@ -8,16 +8,11 @@ import com.bloomscorp.aster.product.subcategory.orm.AsterProductSubCategory;
 import java.util.List;
 
 public abstract class AsterProductSubCategoryDAOController<
-        CA extends AsterProductCategory,
-        SCA extends AsterProductSubCategory<CA>,
-        J extends AsterProductSubCategoryJpaRepository<CA, SCA>
+        SCA extends AsterProductSubCategory,
+        J extends AsterProductSubCategoryJpaRepository<SCA>
         > extends AsterCRUDDAOController<SCA, J> {
 
     public AsterProductSubCategoryDAOController(J repository) {
         super(repository);
-    }
-
-    public List<SCA> findByCategory(CA category) {
-        return this.getRepository().findByCategory(category);
     }
 }

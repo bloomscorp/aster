@@ -17,12 +17,13 @@ import org.hibernate.annotations.ColumnDefault;
 @MappedSuperclass
 public abstract class AsterCartItem<
     CA extends AsterProductCategory,
-    SCA extends AsterProductSubCategory<CA>,
+    SCA extends AsterProductSubCategory,
     CO extends AsterProductCollection,
     P extends AsterProduct<CA, SCA, CO>
     > extends BehemothORM {
 
     public abstract P getProduct();
+    public abstract void setProduct(P product);
 
     @Column(
         name = AsterCartItemContract.QUANTITY,

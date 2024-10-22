@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class AsterProductResponse<
         CA extends AsterProductCategory,
-        SCA extends AsterProductSubCategory<CA>,
+        SCA extends AsterProductSubCategory,
         CO extends AsterProductCollection,
         P extends AsterProduct<CA, SCA, CO>
         > extends RainResponse<P> {

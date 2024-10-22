@@ -11,7 +11,7 @@ import java.util.List;
 
 public abstract class AsterProductDAOController<
         CA extends AsterProductCategory,
-        SCA extends AsterProductSubCategory<CA>,
+        SCA extends AsterProductSubCategory,
         CO extends AsterProductCollection,
         P extends AsterProduct<CA, SCA, CO>,
         R extends AsterProductJpaRepository<CA, SCA, CO, P>

@@ -19,7 +19,7 @@ public class AsterCartResponse<
     R extends AsterUserRole<E>,
     T extends NVerseTenant<E, R>,
     CA extends AsterProductCategory,
-    SCA extends AsterProductSubCategory<CA>,
+    SCA extends AsterProductSubCategory,
     CO extends AsterProductCollection,
     P extends AsterProduct<CA, SCA, CO>,
     CI extends AsterCartItem<CA, SCA, CO, P>,
