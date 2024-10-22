@@ -28,7 +28,7 @@ public abstract class AsterProductController<
         R extends NVerseRole<E>,
         C extends CronManager<B, AsterLog, A, T, E, R>,
         CA extends AsterProductCategory,
-        SCA extends AsterProductSubCategory<CA>,
+        SCA extends AsterProductSubCategory,
         CO extends AsterProductCollection,
         P extends AsterProduct<CA, SCA, CO>,
         J extends AsterProductJpaRepository<CA, SCA, CO, P>

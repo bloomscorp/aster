@@ -18,45 +18,39 @@ import com.bloomscorp.nverse.sanitizer.HttpRequestDumpSanitizer;
 import com.bloomscorp.raintree.RainTree;
 
 public abstract class AsterProductSubCategoryController<
-        B extends LogBook<AsterLog, A, T, E, R>,
-        A extends AuthenticationLog,
-        T extends NVerseTenant<E, R>,
-        E extends Enum<E>,
-        R extends AsterUserRole<E>,
-        C extends CronManager<B, AsterLog, A, T, E, R>,
-        CA extends AsterProductCategory,
-        SCA extends AsterProductSubCategory<CA>,
-        J extends AsterProductSubCategoryJpaRepository<CA, SCA>
-        > extends AsterCRUDController<B, A, T, E, R, C> {
-
-    private final AsterProductSubCategoryDAOController<CA, SCA, J> daoController;
-    private final AsterProductSubCategoryResponse<CA, SCA> response;
-
-    public AsterProductSubCategoryController(
-            RainTree rainTree,
-            B logBook,
-            C cron,
-            NVerseGatekeeper<T, E, R> gatekeeper,
-            NVerseAuthorityResolver<T, E, R> authorityResolver,
-            HttpRequestDumpSanitizer httpRequestDumpSanitizer,
-            AsterProductSubCategoryDAOController<CA, SCA, J> daoController,
-            AsterProductSubCategoryResponse<CA, SCA> response
-    ) {
-        super(
-                rainTree,
-                logBook,
-                cron,
-                gatekeeper,
-                authorityResolver,
-                httpRequestDumpSanitizer
-        );
-        this.daoController = daoController;
-        this.response = response;
-    }
-
-    public String getSubCategoryListByCategory(CA category) {
-        return this.response.buildList(
-                this.daoController.findByCategory(category)
-        );
-    }
+	B extends LogBook<AsterLog, A, T, E, R>,
+	A extends AuthenticationLog,
+	T extends NVerseTenant<E, R>,
+	E extends Enum<E>,
+	R extends AsterUserRole<E>,
+	C extends CronManager<B, AsterLog, A, T, E, R>,
+	CA extends AsterProductCategory,
+	SCA extends AsterProductSubCategory,
+	J extends AsterProductSubCategoryJpaRepository<SCA>
+	> extends AsterCRUDController<B, A, T, E, R, C> {
+	
+	private final AsterProductSubCategoryDAOController<SCA, J> daoController;
+	private final AsterProductSubCategoryResponse<CA, SCA> response;
+	
+	public AsterProductSubCategoryController(
+		RainTree rainTree,
+		B logBook,
+		C cron,
+		NVerseGatekeeper<T, E, R> gatekeeper,
+		NVerseAuthorityResolver<T, E, R> authorityResolver,
+		HttpRequestDumpSanitizer httpRequestDumpSanitizer,
+		AsterProductSubCategoryDAOController<SCA, J> daoController,
+		AsterProductSubCategoryResponse<CA, SCA> response
+	) {
+		super(
+			rainTree,
+			logBook,
+			cron,
+			gatekeeper,
+			authorityResolver,
+			httpRequestDumpSanitizer
+		);
+		this.daoController = daoController;
+		this.response = response;
+	}
 }

@@ -7,43 +7,37 @@ import com.bloomscorp.aster.product.subcategory.orm.AsterProductSubCategory;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
 
+import java.util.List;
+
 @Getter
 @Setter
 @MappedSuperclass
 public abstract class AsterProduct<
-		CA extends AsterProductCategory,
-		SCA extends AsterProductSubCategory<CA>,
-		CO extends AsterProductCollection
-		> extends BehemothORM {
-
-	public abstract CA getCategory();
-	public abstract void setCategory(CA category);
-
-	public abstract SCA getSubCategory();
-	public abstract void setSubCategory(SCA subCategory);
-
-	public abstract CO getCollection();
-	public abstract void setCollection(CO collection);
-
+	CA extends AsterProductCategory,
+	SCA extends AsterProductSubCategory,
+	CO extends AsterProductCollection
+	> extends BehemothORM {
+	
 	@Column(
 		name = AsterProductContract.NAME,
 		nullable = false,
 		columnDefinition = "TEXT"
 	)
 	private String name;
-
+	
 	@Column(
 		name = AsterProductContract.SLUG,
 		nullable = false,
 		columnDefinition = "TEXT"
 	)
 	private String slug;
-
+	
 	@Column(
 		name = AsterProductContract.SKU,
 		nullable = false,
@@ -51,7 +45,7 @@ public abstract class AsterProduct<
 		length = 25
 	)
 	private String sku;
-
+	
 	@Column(
 		name = AsterProductContract.PRICE,
 		nullable = false,
@@ -60,8 +54,8 @@ public abstract class AsterProduct<
 		scale = 2
 	)
 	@ColumnDefault("0.00")
-	private double price = 0.00;
-
+	private Double price = 0.00;
+	
 	@Column(
 		name = AsterProductContract.QUANTITY,
 		nullable = false,
@@ -71,7 +65,7 @@ public abstract class AsterProduct<
 	)
 	@ColumnDefault("0.00")
 	private Double quantity = 0.00;
-
+	
 	@Column(
 		name = AsterProductContract.DESCRIPTION,
 		nullable = false,
@@ -79,7 +73,7 @@ public abstract class AsterProduct<
 	)
 	@FullTextField
 	private String description;
-
+	
 	@Column(
 		name = AsterProductContract.CARE,
 		nullable = false,
@@ -87,21 +81,21 @@ public abstract class AsterProduct<
 	)
 	@FullTextField
 	private String care;
-
+	
 	@Column(
 		name = AsterProductContract.SALE,
 		columnDefinition = "BOOLEAN"
 	)
 	@ColumnDefault("FALSE")
 	private boolean sale = false;
-
+	
 	@Column(
 		name = AsterProductContract.DISCOUNT,
 		columnDefinition = "NUMERIC"
 	)
 	@ColumnDefault("0.00")
 	private double discount = 0.00;
-
+	
 	@Column(
 		name = AsterProductContract.DISABLED,
 		nullable = false,
@@ -109,4 +103,14 @@ public abstract class AsterProduct<
 	)
 	@ColumnDefault("false")
 	private boolean disabled = false;
+	
+	@Transient
+	List<CO> collections;
+	
+	@Transient
+	List<SCA> subCategories;
+	
+	public abstract CA getCategory();
+	
+	public abstract void setCategory(CA category);
 }

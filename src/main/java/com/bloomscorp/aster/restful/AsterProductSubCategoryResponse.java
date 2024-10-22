@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AsterProductSubCategoryResponse<
         CA extends AsterProductCategory,
-        SCA extends AsterProductSubCategory<CA>
+        SCA extends AsterProductSubCategory
         > extends RainResponse<SCA> {
 
     public AsterProductSubCategoryResponse(RainTree rainTree) {
