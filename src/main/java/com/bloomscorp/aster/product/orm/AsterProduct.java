@@ -49,9 +49,7 @@ public abstract class AsterProduct<
 	@Column(
 		name = AsterProductContract.PRICE,
 		nullable = false,
-		columnDefinition = "DECIMAL",
-		precision = 8,
-		scale = 2
+		columnDefinition = "NUMERIC"
 	)
 	@ColumnDefault("0.00")
 	private Double price = 0.00;
@@ -59,9 +57,7 @@ public abstract class AsterProduct<
 	@Column(
 		name = AsterProductContract.QUANTITY,
 		nullable = false,
-		columnDefinition = "DECIMAL",
-		precision = 8,
-		scale = 2
+		columnDefinition = "NUMERIC"
 	)
 	@ColumnDefault("0.00")
 	private Double quantity = 0.00;
