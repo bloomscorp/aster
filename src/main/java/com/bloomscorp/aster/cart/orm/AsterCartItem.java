@@ -28,9 +28,7 @@ public abstract class AsterCartItem<
     @Column(
         name = AsterCartItemContract.QUANTITY,
         nullable = false,
-        columnDefinition = "DECIMAL",
-        precision = 8,
-        scale = 2
+        columnDefinition = "NUMERIC"
     )
     @ColumnDefault("0.00")
     private Double quantity = 0.00;
