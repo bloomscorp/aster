@@ -7,12 +7,15 @@ public final class AsterProductContract {
 	public final static String SLUG = "slug";
 	public final static String SKU = "sku";
 	public final static String PRICE = "price";
+	public static final String SELLING_PRICE = "selling_price";
 	public final static String QUANTITY = "quantity";
 	public final static String DESCRIPTION = "description";
-	public final static String CARE = "product_care";
+	public final static String DETAILS = "details";
 	public final static String SALE = "sale";
 	public final static String DISCOUNT = "discount";
 	public final static String DISABLED = "disabled";
+	public static final String STOCK = "stock";
+	public static final String PRODUCT_RANK = "product_rank";
 
 	private AsterProductContract() {
 	}

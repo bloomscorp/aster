@@ -7,7 +7,6 @@ import com.bloomscorp.aster.support.Constant;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.behemoth.orm.BehemothORM;
-import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -15,7 +14,9 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.SqlTypes;
 
 @Getter
 @Setter
@@ -32,7 +33,7 @@ public abstract class AsterAuthenticationLog<
 		columnDefinition = "auth_action_enum",
 		nullable = false
 	)
-	@Type(PostgreSQLEnumType.class)
+	@JdbcTypeCode(SqlTypes.NAMED_ENUM)
 	private AUTH_ACTION_ENUM action;
 
 	@Column(

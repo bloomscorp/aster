@@ -4,10 +4,10 @@ import com.bloomscorp.aster.order.contract.AsterOrderContract;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
-import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.Column;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public abstract class AsterOrder<
             nullable = false,
             columnDefinition = "JSONB"
     )
-    @Type(JsonBinaryType.class)
+    @JdbcTypeCode(SqlTypes.JSON)
     private Object address;
 
     @Column(
@@ -42,7 +42,7 @@ public abstract class AsterOrder<
             nullable = false,
             columnDefinition = "JSONB"
     )
-    @Type(JsonBinaryType.class)
+    @JdbcTypeCode(SqlTypes.JSON)
     private Object transaction;
 
     @Column(

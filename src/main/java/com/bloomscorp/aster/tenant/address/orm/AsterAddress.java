@@ -4,14 +4,15 @@ import com.bloomscorp.aster.tenant.address.contract.AsterAddressContract;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
-import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.SqlTypes;
 
 @Getter
 @MappedSuperclass
@@ -110,7 +111,7 @@ public abstract class AsterAddress<
 		columnDefinition = "address_type_enum",
 		nullable = false
 	)
-	@Type(PostgreSQLEnumType.class)
+	@JdbcTypeCode(SqlTypes.NAMED_ENUM)
 	@ColumnDefault("'HOME'")
 	public ADDRESS_TYPE addressType = ADDRESS_TYPE.PERMANENT;
 
