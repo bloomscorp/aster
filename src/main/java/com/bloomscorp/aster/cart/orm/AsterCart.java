@@ -1,5 +1,6 @@
 package com.bloomscorp.aster.cart.orm;
 
+import com.bloomscorp.aster.cart.contract.AsterCartContract;
 import com.bloomscorp.aster.product.category.orm.AsterProductCategory;
 import com.bloomscorp.aster.product.collection.orm.AsterProductCollection;
 import com.bloomscorp.aster.product.orm.AsterProduct;
@@ -9,12 +10,10 @@ import com.bloomscorp.aster.product.subcategory.orm.AsterProductSubCategory;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
+import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
-import org.hibernate.type.SqlTypes;
 
 import java.util.List;
 
@@ -38,8 +37,20 @@ public abstract class AsterCart<
     CI extends AsterCartItem<CA, SCA, CO, P>
     > extends BehemothORM {
 
-    public abstract T getTenant();
+    @Column(
+        name = AsterCartContract.CREATED_AT,
+        nullable = false
+    )
+    private Long createdAt;
+    @Column(
+        name = AsterCartContract.UPDATED_AT
+    )
+    private Long updatedAt;
 
-    @JdbcTypeCode(SqlTypes.JSON)
+    public abstract T getTenant();
+    public abstract void setTenant(T tenant);
+
     public abstract List<CI> getItems();
+    public abstract void setItems(List<CI> items);
+
 }
