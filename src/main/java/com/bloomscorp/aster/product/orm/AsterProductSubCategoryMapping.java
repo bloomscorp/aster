@@ -12,18 +12,24 @@ import lombok.Setter;
 @Setter
 @MappedSuperclass
 public abstract class AsterProductSubCategoryMapping<
-	CA extends AsterProductCategory,
-	SCA extends AsterProductSubCategory,
-	CO extends AsterProductCollection,
-	P extends AsterProduct<CA, SCA, CO>
-	> extends BehemothORM {
-	
-	public abstract SCA getSubCategory();
-	
-	public abstract void setSubCategory(SCA subCategory);
-	
-	public abstract P getProduct();
-	
-	public abstract void setProduct(P product);
-	
+    CA extends AsterProductCategory,
+    SCA extends AsterProductSubCategory,
+    CO extends AsterProductCollection,
+    P extends AsterProduct<
+        CA,
+        SCA,
+        CO,
+        ? extends AsterProductSubCategoryMapping<CA, SCA, CO, ?>,
+        ? extends AsterProductCollectionMapping<CA, SCA, CO, ?>
+        >
+    > extends BehemothORM {
+
+    public abstract SCA getSubCategory();
+
+    public abstract void setSubCategory(SCA subCategory);
+
+    public abstract P getProduct();
+
+    public abstract void setProduct(P product);
+
 }

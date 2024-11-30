@@ -5,14 +5,15 @@ import com.bloomscorp.alfred.orm.LOG_TYPE;
 import com.bloomscorp.alfred.orm.Log;
 import com.bloomscorp.aster.support.Constant;
 import com.bloomscorp.behemoth.orm.BehemothORM;
-import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.SqlTypes;
 
 @Builder
 @NoArgsConstructor
@@ -35,7 +36,7 @@ public class AsterLog extends BehemothORM implements Log {
 		columnDefinition = "log_enum",
 		nullable = false
 	)
-	@Type(PostgreSQLEnumType.class)
+	@JdbcTypeCode(SqlTypes.NAMED_ENUM)
 	private LOG_TYPE logType;
 
 	@Column(

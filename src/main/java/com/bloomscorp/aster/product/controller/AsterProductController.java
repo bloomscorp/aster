@@ -10,6 +10,8 @@ import com.bloomscorp.aster.product.collection.orm.AsterProductCollection;
 import com.bloomscorp.aster.product.dao.controller.AsterProductDAOController;
 import com.bloomscorp.aster.product.dao.repository.AsterProductJpaRepository;
 import com.bloomscorp.aster.product.orm.AsterProduct;
+import com.bloomscorp.aster.product.orm.AsterProductCollectionMapping;
+import com.bloomscorp.aster.product.orm.AsterProductSubCategoryMapping;
 import com.bloomscorp.aster.product.subcategory.orm.AsterProductSubCategory;
 import com.bloomscorp.aster.restful.AsterProductResponse;
 import com.bloomscorp.nverse.NVerseAuthorityResolver;
@@ -30,7 +32,13 @@ public abstract class AsterProductController<
         CA extends AsterProductCategory,
         SCA extends AsterProductSubCategory,
         CO extends AsterProductCollection,
-        P extends AsterProduct<CA, SCA, CO>,
+        P extends AsterProduct<
+            CA,
+            SCA,
+            CO,
+            ? extends AsterProductSubCategoryMapping<CA, SCA, CO, ?>,
+            ? extends AsterProductCollectionMapping<CA, SCA, CO, ?>
+            >,
         J extends AsterProductJpaRepository<CA, SCA, CO, P>
         > extends AsterCRUDController<B, A, T, E, R, C> {
 

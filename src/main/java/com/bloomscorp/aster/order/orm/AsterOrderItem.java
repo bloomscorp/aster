@@ -4,10 +4,10 @@ import com.bloomscorp.aster.order.contract.AsterOrderItemContract;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
-import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.Column;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.LinkedHashMap;
 
@@ -46,7 +46,8 @@ public abstract class AsterOrderItem<
             columnDefinition = "JSONB",
             nullable = false
     )
-    @Type(JsonBinaryType.class)
+//    @Type(JsonBinaryType.class)
+    @JdbcTypeCode(SqlTypes.JSON)
     @ColumnDefault("'{}'")
     private final Object productDetails = new LinkedHashMap<>();
 

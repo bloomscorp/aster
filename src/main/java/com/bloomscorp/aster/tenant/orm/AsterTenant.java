@@ -4,13 +4,13 @@ import com.bloomscorp.aster.tenant.contract.TenantContract;
 import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVERSE_AUTH_PROVIDER;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
-import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.List;
 
@@ -99,7 +99,7 @@ public abstract class AsterTenant<
 		columnDefinition = "gender_enum",
 		nullable = false
 	)
-	@Type(PostgreSQLEnumType.class)
+	@JdbcTypeCode(SqlTypes.NAMED_ENUM)
 	private GENDER gender;
 
 	@Column(
@@ -173,7 +173,7 @@ public abstract class AsterTenant<
 		columnDefinition = "auth_provider_enum",
 		nullable = false
 	)
-	@Type(PostgreSQLEnumType.class)
+	@JdbcTypeCode(SqlTypes.NAMED_ENUM)
 	@ColumnDefault("UNKNOWN")
 	private NVERSE_AUTH_PROVIDER provider = NVERSE_AUTH_PROVIDER.UNKNOWN;
 
