@@ -76,7 +76,7 @@ public class AsterBeanFactory<
 	@Bean
 	@ConditionalOnMissingBean
 	public NVerseJWTService<T, E, R> nVerseJWTService() {
-		return new NVerseJWTService<>(this.jwtSecret);
+		return new NVerseJWTService<>(this.jwtSecret, 604800000);
 	}
 
 	@Bean

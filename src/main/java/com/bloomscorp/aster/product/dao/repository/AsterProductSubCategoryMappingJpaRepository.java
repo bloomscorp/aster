@@ -7,6 +7,7 @@ import com.bloomscorp.aster.product.orm.AsterProductCollectionMapping;
 import com.bloomscorp.aster.product.orm.AsterProductSubCategoryMapping;
 import com.bloomscorp.aster.product.subcategory.orm.AsterProductSubCategory;
 import com.bloomscorp.aster.support.AsterExclude;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public interface AsterProductSubCategoryMappingJpaRepository<
         ? extends AsterProductCollectionMapping<CA, SCA, CO, ?>
         >,
     SCAM extends AsterProductSubCategoryMapping<CA, SCA, CO, P>
-    > {
+    > extends JpaRepository<SCAM, Long> {
 
     List<SCAM> findByProduct(P product);
 

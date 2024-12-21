@@ -110,6 +110,13 @@ public abstract class AsterProduct<
     )
     @ColumnDefault("false")
     private boolean disabled = false;
+    
+    @Column(
+        name = AsterProductContract.PRODUCT_RANK,
+        nullable = false,
+        columnDefinition = "BIGINT"
+    )
+    private Long productRank = 0L;
 
     public abstract CA getCategory();
 
