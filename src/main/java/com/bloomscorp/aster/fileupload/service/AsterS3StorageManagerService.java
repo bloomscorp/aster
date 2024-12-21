@@ -24,25 +24,37 @@ public class AsterS3StorageManagerService extends StorageManagerService {
     private final S3Client s3Client;
     private final String s3Bucket;
 
-    AsterS3StorageManagerService(S3Client s3Client, String s3Bucket) {
+    public AsterS3StorageManagerService(S3Client s3Client, String s3Bucket) {
         this.s3Client = s3Client;
         this.s3Bucket = s3Bucket;
     }
 
     @Override
-    public String uploadImage(MultipartFile file) {
+    public String uploadImage(MultipartFile file, String basePath, String fileName) {
         try {
 
             if (file == null) {
                 return "";
             }
-
-            String fileName = AsterUtility.buildImageFileName(Objects.requireNonNull(file.getOriginalFilename()));
+            
+            if (fileName == null || fileName.isEmpty()){
+                fileName = AsterUtility
+                    .buildImageFileName(
+                        Objects.requireNonNull(file.getOriginalFilename())
+                    );
+            }
+            
+            if(!basePath.isBlank()){
+                if (!basePath.endsWith("/")) {
+                    basePath += "/";
+                }
+            }
+            
             HashMap<String, String> fileMetaData = extractMetaData(file);
 
             PutObjectRequest request = PutObjectRequest.builder()
                 .bucket(s3Bucket)
-                .key(fileName)
+                .key(basePath + fileName)
                 .contentType(fileMetaData.get("Content-Type"))
                 .acl(Constant.AWS_S3_ACL)
                 .metadata(fileMetaData)
@@ -53,7 +65,7 @@ public class AsterS3StorageManagerService extends StorageManagerService {
             GetUrlRequest getUrlRequest = GetUrlRequest
                 .builder()
                 .bucket(s3Bucket)
-                .key(fileName)
+                .key(basePath + fileName)
                 .build();
 
             return this.s3Client.utilities().getUrl(getUrlRequest).toExternalForm();

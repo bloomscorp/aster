@@ -7,7 +7,6 @@ public final class AsterProductContract {
 	public final static String SLUG = "slug";
 	public final static String SKU = "sku";
 	public final static String PRICE = "price";
-	public static final String SELLING_PRICE = "selling_price";
 	public final static String QUANTITY = "quantity";
 	public final static String DESCRIPTION = "description";
 	public final static String DETAILS = "details";
