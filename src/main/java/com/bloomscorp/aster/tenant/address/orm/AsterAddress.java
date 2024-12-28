@@ -1,8 +1,8 @@
 package com.bloomscorp.aster.tenant.address.orm;
 
+import com.bloomscorp.aster.support.AsterBehemothORM;
 import com.bloomscorp.aster.tenant.address.contract.AsterAddressContract;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
-import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
@@ -11,7 +11,6 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 import org.hibernate.type.SqlTypes;
 
 @Getter
@@ -20,7 +19,7 @@ public abstract class AsterAddress<
 	E extends Enum<E>,
 	R extends AsterUserRole<E>,
 	T extends NVerseTenant<E, R>
-	> extends BehemothORM {
+	> extends AsterBehemothORM {
 
 	public abstract T getTenant();
 

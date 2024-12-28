@@ -6,7 +6,6 @@ import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.raintree.RainTree;
 import com.bloomscorp.raintree.restful.RainResponse;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

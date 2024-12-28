@@ -3,8 +3,8 @@ package com.bloomscorp.aster.alfred.orm;
 import com.bloomscorp.alfred.contract.LogContract;
 import com.bloomscorp.alfred.orm.LOG_TYPE;
 import com.bloomscorp.alfred.orm.Log;
+import com.bloomscorp.aster.support.AsterBehemothORM;
 import com.bloomscorp.aster.support.Constant;
-import com.bloomscorp.behemoth.orm.BehemothORM;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 import org.hibernate.type.SqlTypes;
 
 @Builder
@@ -21,7 +20,7 @@ import org.hibernate.type.SqlTypes;
 @ToString
 @Entity(name = LogContract.TABLE)
 @Table(name = LogContract.TABLE)
-public class AsterLog extends BehemothORM implements Log {
+public class AsterLog extends AsterBehemothORM implements Log {
 
 	@Column(
 		name = LogContract.LOGGER,

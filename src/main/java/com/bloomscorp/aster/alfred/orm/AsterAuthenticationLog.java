@@ -3,10 +3,10 @@ package com.bloomscorp.aster.alfred.orm;
 import com.bloomscorp.alfred.contract.AuthenticationLogContract;
 import com.bloomscorp.alfred.orm.AUTH_ACTION_ENUM;
 import com.bloomscorp.alfred.orm.AuthenticationLog;
+import com.bloomscorp.aster.support.AsterBehemothORM;
 import com.bloomscorp.aster.support.Constant;
 import com.bloomscorp.aster.tenant.orm.AsterTenant;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
-import com.bloomscorp.behemoth.orm.BehemothORM;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -15,7 +15,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 import org.hibernate.type.SqlTypes;
 
 @Getter
@@ -25,7 +24,7 @@ public abstract class AsterAuthenticationLog<
 	T extends AsterTenant<E, R>,
 	E extends Enum<E>,
 	R extends AsterUserRole<E>
-> extends BehemothORM implements AuthenticationLog {
+> extends AsterBehemothORM implements AuthenticationLog {
 
 	@Enumerated(EnumType.STRING)
 	@Column(
