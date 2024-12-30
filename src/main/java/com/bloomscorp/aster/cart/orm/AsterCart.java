@@ -5,10 +5,11 @@ import com.bloomscorp.aster.product.category.orm.AsterProductCategory;
 import com.bloomscorp.aster.product.collection.orm.AsterProductCollection;
 import com.bloomscorp.aster.product.orm.AsterProduct;
 import com.bloomscorp.aster.product.orm.AsterProductCollectionMapping;
+import com.bloomscorp.aster.product.orm.AsterProductImage;
 import com.bloomscorp.aster.product.orm.AsterProductSubCategoryMapping;
 import com.bloomscorp.aster.product.subcategory.orm.AsterProductSubCategory;
+import com.bloomscorp.aster.support.AsterBehemothORM;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
-import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
@@ -32,10 +33,11 @@ public abstract class AsterCart<
         SCA,
         CO,
         ? extends AsterProductSubCategoryMapping<CA, SCA, CO, ?>,
-        ? extends AsterProductCollectionMapping<CA, SCA, CO, ?>
+        ? extends AsterProductCollectionMapping<CA, SCA, CO, ?>,
+        ? extends AsterProductImage<CA, SCA, CO, P>
         >,
     CI extends AsterCartItem<CA, SCA, CO, P>
-    > extends BehemothORM {
+    > extends AsterBehemothORM {
 
     @Column(
         name = AsterCartContract.CREATED_AT,

@@ -16,7 +16,7 @@ public abstract class StorageManagerService {
         return metadata;
     }
 
-    public abstract String uploadImage(MultipartFile file);
+    public abstract String uploadImage(MultipartFile file, String basePath, String filename);
 
     protected abstract void deleteImage(String fileUrl);
 

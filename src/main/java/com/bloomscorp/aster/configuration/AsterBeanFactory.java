@@ -10,7 +10,6 @@ import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.*;
 import com.bloomscorp.raintree.RainTree;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -76,7 +75,7 @@ public class AsterBeanFactory<
 	@Bean
 	@ConditionalOnMissingBean
 	public NVerseJWTService<T, E, R> nVerseJWTService() {
-		return new NVerseJWTService<>(this.jwtSecret);
+		return new NVerseJWTService<>(this.jwtSecret, 604800000);
 	}
 
 	@Bean

@@ -1,8 +1,8 @@
 package com.bloomscorp.aster.order.orm;
 
 import com.bloomscorp.aster.order.contract.AsterOrderContract;
+import com.bloomscorp.aster.support.AsterBehemothORM;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
-import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import jakarta.persistence.Column;
 import org.hibernate.annotations.ColumnDefault;
@@ -15,7 +15,7 @@ public abstract class AsterOrder<
         E extends Enum<E>,
         R extends AsterUserRole<E>,
         T extends NVerseTenant<E, R>
-        > extends BehemothORM {
+        > extends AsterBehemothORM {
 
     public abstract T getTenant();
 
