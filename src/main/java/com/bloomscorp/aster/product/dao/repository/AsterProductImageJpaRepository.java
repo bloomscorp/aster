@@ -1,16 +1,17 @@
-package com.bloomscorp.aster.product.dao.controller;
+package com.bloomscorp.aster.product.dao.repository;
 
-import com.bloomscorp.aster.behemoth.AsterCRUDDAOController;
 import com.bloomscorp.aster.product.category.orm.AsterProductCategory;
 import com.bloomscorp.aster.product.collection.orm.AsterProductCollection;
-import com.bloomscorp.aster.product.dao.repository.AsterProductSubCategoryMappingJpaRepository;
 import com.bloomscorp.aster.product.orm.AsterProduct;
 import com.bloomscorp.aster.product.orm.AsterProductCollectionMapping;
 import com.bloomscorp.aster.product.orm.AsterProductImage;
 import com.bloomscorp.aster.product.orm.AsterProductSubCategoryMapping;
 import com.bloomscorp.aster.product.subcategory.orm.AsterProductSubCategory;
+import com.bloomscorp.aster.support.AsterExclude;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public class AsterProductSubCategoryMappingDAOController<
+@AsterExclude
+public interface AsterProductImageJpaRepository<
 	CA extends AsterProductCategory,
 	SCA extends AsterProductSubCategory,
 	CO extends AsterProductCollection,
@@ -22,11 +23,6 @@ public class AsterProductSubCategoryMappingDAOController<
 		? extends AsterProductCollectionMapping<CA, SCA, CO, ?>,
 		? extends AsterProductImage<CA, SCA, CO, P>
 		>,
-	SCAM extends AsterProductSubCategoryMapping<CA, SCA, CO, P>,
-	R extends AsterProductSubCategoryMappingJpaRepository<CA, SCA, CO, P, SCAM>
-	> extends AsterCRUDDAOController<SCAM, R> {
-	
-	public AsterProductSubCategoryMappingDAOController(R repository) {
-		super(repository);
-	}
+	PIMG extends AsterProductImage<CA, SCA, CO, P>
+	> extends JpaRepository<PIMG, Long> {
 }

@@ -1,7 +1,7 @@
 package com.bloomscorp.aster.product.subcategory.orm;
 
 import com.bloomscorp.aster.product.subcategory.contract.AsterProductSubCategoryContract;
-import com.bloomscorp.behemoth.orm.BehemothORM;
+import com.bloomscorp.aster.support.AsterBehemothORM;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class AsterProductSubCategory extends BehemothORM {
+public abstract class AsterProductSubCategory extends AsterBehemothORM {
 	
 	@Column(
 		name = AsterProductSubCategoryContract.NAME,

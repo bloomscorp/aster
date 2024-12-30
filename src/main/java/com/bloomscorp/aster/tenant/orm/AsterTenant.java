@@ -1,7 +1,7 @@
 package com.bloomscorp.aster.tenant.orm;
 
+import com.bloomscorp.aster.support.AsterBehemothORM;
 import com.bloomscorp.aster.tenant.contract.TenantContract;
-import com.bloomscorp.behemoth.orm.BehemothORM;
 import com.bloomscorp.nverse.pojo.NVERSE_AUTH_PROVIDER;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import jakarta.persistence.*;
@@ -20,7 +20,7 @@ import java.util.List;
 public abstract class AsterTenant<
 	E extends Enum<E>,
 	R extends AsterUserRole<E>
-> extends BehemothORM implements NVerseTenant<E, R> {
+> extends AsterBehemothORM implements NVerseTenant<E, R> {
 
 	@Column(
 		name = TenantContract.UID,

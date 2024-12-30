@@ -3,7 +3,7 @@ package com.bloomscorp.aster.product.orm;
 import com.bloomscorp.aster.product.category.orm.AsterProductCategory;
 import com.bloomscorp.aster.product.collection.orm.AsterProductCollection;
 import com.bloomscorp.aster.product.subcategory.orm.AsterProductSubCategory;
-import com.bloomscorp.behemoth.orm.BehemothORM;
+import com.bloomscorp.aster.support.AsterBehemothORM;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,9 +20,10 @@ public abstract class AsterProductCollectionMapping<
         SCA,
         CO,
         ? extends AsterProductSubCategoryMapping<CA, SCA, CO, ?>,
-        ? extends AsterProductCollectionMapping<CA, SCA, CO, ?>
+        ? extends AsterProductCollectionMapping<CA, SCA, CO, ?>,
+        ? extends AsterProductImage<CA, SCA, CO, P>
         >
-    > extends BehemothORM {
+    > extends AsterBehemothORM {
 
     public abstract CO getCollection();
 
