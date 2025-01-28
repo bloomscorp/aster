@@ -28,7 +28,7 @@ public abstract class AsterAddressController<
         > extends AsterCRUDController<B, A, T, E, R, C> {
 
     public final AsterAddressResponse<E, R, T, AD> response;
-    private final AsterAddressDAOController<E, R, T, AD, J> daoController;
+    public final AsterAddressDAOController<E, R, T, AD, J> daoController;
 
     public AsterAddressController(
             RainTree rainTree,

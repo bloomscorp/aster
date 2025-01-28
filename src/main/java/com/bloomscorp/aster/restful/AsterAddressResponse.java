@@ -1,5 +1,6 @@
 package com.bloomscorp.aster.restful;
 
+import com.bloomscorp.aster.support.ResponseParameter;
 import com.bloomscorp.aster.tenant.address.orm.AsterAddress;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
@@ -8,7 +9,7 @@ import com.bloomscorp.raintree.restful.RainResponse;
 
 import java.util.List;
 
-public class AsterAddressResponse<
+public abstract class AsterAddressResponse<
         E extends Enum<E>,
         R extends AsterUserRole<E>,
         T extends NVerseTenant<E, R>,
@@ -21,11 +22,11 @@ public class AsterAddressResponse<
 
     @Override
     public String buildEntity(A a) {
-        return "";
+        return this.prepareEntity(a, ResponseParameter.ADDRESS);
     }
 
     @Override
     public String buildList(List<A> list) {
-        return "";
+        return this.prepareList(list, ResponseParameter.ADDRESS_LIST);
     }
 }

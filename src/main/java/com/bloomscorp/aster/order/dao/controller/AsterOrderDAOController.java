@@ -12,7 +12,7 @@ public abstract class AsterOrderDAOController<
         E extends Enum<E>,
         R extends AsterUserRole<E>,
         T extends NVerseTenant<E, R>,
-        O extends AsterOrder<E, R, T>,
+        O extends AsterOrder<E, R, T, ?>,
         J extends AsterOrderJpaRepository<E, R, T, O>
         > extends AsterCRUDDAOController<O, J> {
 

@@ -5,22 +5,30 @@ import com.bloomscorp.aster.support.AsterBehemothORM;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.util.List;
 
+@Getter
+@Setter
+@MappedSuperclass
 public abstract class AsterOrder<
         E extends Enum<E>,
         R extends AsterUserRole<E>,
-        T extends NVerseTenant<E, R>
+        T extends NVerseTenant<E, R>,
+        OI extends AsterOrderItem<E, R, T, ?>
         > extends AsterBehemothORM {
 
     public abstract T getTenant();
+    public abstract void setTenant(T tenant);
 
-    public abstract List<AsterOrderItem<E, R, T, AsterOrder<E, R, T>>> getOrderItemList();
-    public abstract void setOrderItemList(List<AsterOrderItem<E, R, T, AsterOrder<E, R, T>>> orderItemList);
+    public abstract List<OI> getOrderItemList();
+    public abstract void setOrderItemList(List<OI> orderItemList);
 
     @Column(
             name = AsterOrderContract.ADDRESS,

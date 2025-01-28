@@ -23,7 +23,7 @@ public abstract class AsterOrderController<
         E extends Enum<E>,
         R extends AsterUserRole<E>,
         C extends CronManager<B, AsterLog, A, T, E, R>,
-        O extends AsterOrder<E, R, T>,
+        O extends AsterOrder<E, R, T, ?>,
         J extends AsterOrderJpaRepository<E, R, T, O>
         > extends AsterCRUDController<B, A, T, E, R, C> {
 
