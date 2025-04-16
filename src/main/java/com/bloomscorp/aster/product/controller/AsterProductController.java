@@ -44,7 +44,7 @@ public abstract class AsterProductController<
         J extends AsterProductJpaRepository<CA, SCA, CO, P>
         > extends AsterCRUDController<B, A, T, E, R, C> {
 
-    private final AsterProductDAOController<CA, SCA, CO, P, J> daoController;
+    public final AsterProductDAOController<CA, SCA, CO, P, J> daoController;
     public final AsterProductResponse<CA, SCA, CO, P> response;
 
     public AsterProductController(

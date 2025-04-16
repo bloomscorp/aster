@@ -27,8 +27,8 @@ public abstract class AsterProductCollectionController<
         J extends AsterProductCollectionJpaRepository<CO>
         > extends AsterCRUDController<B, A, T, E, R, C> {
 
-    private final AsterProductCollectionDAOController<CO, J> daoController;
-    private final AsterProductCollectionResponse<CO> response;
+    public final AsterProductCollectionDAOController<CO, J> daoController;
+    public final AsterProductCollectionResponse<CO> response;
 
     public AsterProductCollectionController(
             RainTree rainTree,

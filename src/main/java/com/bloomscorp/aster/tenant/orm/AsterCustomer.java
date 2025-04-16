@@ -1,5 +1,7 @@
 package com.bloomscorp.aster.tenant.orm;
 
+import com.bloomscorp.aster.support.AsterBehemothORM;
+import com.bloomscorp.nverse.pojo.NVerseTenant;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 
@@ -8,7 +10,7 @@ import lombok.Getter;
 public abstract class AsterCustomer<
     E extends Enum<E>,
     R extends AsterUserRole<E>,
-    T extends AsterTenant<E, R>
-> {
+    T extends NVerseTenant<E, R>
+> extends AsterBehemothORM {
     public abstract T getTenant();
 }

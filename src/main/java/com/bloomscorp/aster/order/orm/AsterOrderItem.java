@@ -5,20 +5,27 @@ import com.bloomscorp.aster.support.AsterBehemothORM;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.util.LinkedHashMap;
 
+@Getter
+@Setter
+@MappedSuperclass
 public abstract class AsterOrderItem<
         E extends Enum<E>,
         R extends AsterUserRole<E>,
         T extends NVerseTenant<E, R>,
-        O extends AsterOrder<E, R, T>
+        O extends AsterOrder<E, R, T, ?>
         > extends AsterBehemothORM {
 
     public abstract O getOrder();
+    public abstract void setOrder(O order);
 
     @Column(
             name = AsterOrderItemContract.QUANTITY,
@@ -46,7 +53,6 @@ public abstract class AsterOrderItem<
             columnDefinition = "JSONB",
             nullable = false
     )
-//    @Type(JsonBinaryType.class)
     @JdbcTypeCode(SqlTypes.JSON)
     @ColumnDefault("'{}'")
     private final Object productDetails = new LinkedHashMap<>();

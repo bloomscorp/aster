@@ -28,7 +28,7 @@ public abstract class AsterProductCategoryController<
         > extends AsterCRUDController<B, A, T, E, R, C> {
 
     public final AsterProductCategoryResponse<CA> response;
-    private final AsterProductCategoryDAOController<CA, J> daoController;
+    public final AsterProductCategoryDAOController<CA, J> daoController;
 
     public AsterProductCategoryController(
             RainTree rainTree,

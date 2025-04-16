@@ -7,7 +7,7 @@ import com.bloomscorp.raintree.restful.RainResponse;
 
 import java.util.List;
 
-public class AsterProductCollectionResponse<
+public abstract class AsterProductCollectionResponse<
         CO extends AsterProductCollection
         > extends RainResponse<CO> {
 

@@ -8,7 +8,7 @@ import com.bloomscorp.raintree.restful.RainResponse;
 
 import java.util.List;
 
-public class AsterProductSubCategoryResponse<
+public abstract class AsterProductSubCategoryResponse<
         CA extends AsterProductCategory,
         SCA extends AsterProductSubCategory
         > extends RainResponse<SCA> {

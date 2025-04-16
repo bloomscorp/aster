@@ -9,11 +9,11 @@ import com.bloomscorp.raintree.restful.RainResponse;
 
 import java.util.List;
 
-public class AsterOrderResponse<
+public abstract class AsterOrderResponse<
         E extends Enum<E>,
         R extends AsterUserRole<E>,
         T extends NVerseTenant<E, R>,
-        O extends AsterOrder<E, R, T>
+        O extends AsterOrder<E, R, T, ?>
         > extends RainResponse<O> {
 
     public AsterOrderResponse(RainTree rainTree) {
