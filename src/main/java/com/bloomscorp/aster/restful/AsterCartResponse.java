@@ -17,7 +17,7 @@ import com.bloomscorp.raintree.restful.RainResponse;
 
 import java.util.List;
 
-public class AsterCartResponse<
+public abstract class AsterCartResponse<
     E extends Enum<E>,
     R extends AsterUserRole<E>,
     T extends NVerseTenant<E, R>,
