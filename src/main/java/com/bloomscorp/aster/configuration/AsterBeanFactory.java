@@ -121,7 +121,7 @@ public class AsterBeanFactory<
 	@ConditionalOnMissingBean
 	public <
 		J extends JpaRepository<T, Long>,
-		D extends AsterTenantDAOController<T, J, T, E, R>
+		D extends AsterTenantDAOController<T, ?, E, R, ?>
 		> NVerseUserDetailsService<T, E, R> nVerseUserDetailsService(
 		NVerseEmailEncoder emailEncoder,
 		D tenantDAOController

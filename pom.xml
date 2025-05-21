@@ -15,7 +15,7 @@
 
     <groupId>com.bloomscorp</groupId>
     <artifactId>bmx-aster</artifactId>
-    <version>0.0.70</version>
+    <version>3.4.0.1</version>
     <packaging>jar</packaging>
     <inceptionYear>2023</inceptionYear>
     <url>https://github.com/bloomscorp/bmx-aster</url>
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>com.bloomscorp</groupId>
             <artifactId>bmx-spring-base</artifactId>
-            <version>3.4.0.2</version>
+            <version>3.4.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
@@ -177,7 +177,7 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>11.1.0</version>
+                <version>12.1.1</version>
                 <executions>
                     <execution>
                         <goals>

@@ -17,15 +17,15 @@ import com.bloomscorp.nverse.sanitizer.HttpRequestDumpSanitizer;
 import com.bloomscorp.raintree.RainTree;
 
 public abstract class AsterAddressController<
-        B extends LogBook<AsterLog, A, T, E, R>,
-        A extends AuthenticationLog,
-        T extends NVerseTenant<E, R>,
-        E extends Enum<E>,
-        R extends AsterUserRole<E>,
-        C extends CronManager<B, AsterLog, A, T, E, R>,
-        AD extends AsterAddress<E, R, T>,
-        J extends AsterAddressJpaRepository<E, R, T, AD>
-        > extends AsterCRUDController<B, A, T, E, R, C> {
+    B extends LogBook<AsterLog, A, T, E, R>,
+    A extends AuthenticationLog,
+    T extends NVerseTenant<E, R>,
+    E extends Enum<E>,
+    R extends AsterUserRole<E>,
+    C extends CronManager<B, AsterLog, A, T, E, R>,
+    AD extends AsterAddress<E, R, T>,
+    J extends AsterAddressJpaRepository<E, R, T, AD>
+> extends AsterCRUDController<B, A, T, E, R, C> {
 
     public final AsterAddressResponse<E, R, T, AD> response;
     public final AsterAddressDAOController<E, R, T, AD, J> daoController;

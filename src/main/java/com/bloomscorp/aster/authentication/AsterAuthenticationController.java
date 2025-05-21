@@ -36,7 +36,7 @@ public abstract class AsterAuthenticationController<
 	R extends AsterUserRole<E>,
 	C extends CronManager<B, AsterLog, A, T, E, R>,
 	J extends JpaRepository<T, Long>,
-	D extends AsterTenantDAOController<T, J, T, E, R>,
+	D extends AsterTenantDAOController<T, ?, E, R, ?>,
 	O extends AsterAuth0Service
 > extends AsterCRUDController<B, A, T, E, R, C> {
 
