@@ -3,8 +3,6 @@ package com.bloomscorp.aster.tenant.dao.controller;
 import com.bloomscorp.aster.support.AsterBehemothORM;
 import com.bloomscorp.aster.support.AsterUtility;
 import com.bloomscorp.aster.tenant.dao.repository.accessor.AsterTenantJpaAccessor;
-import com.bloomscorp.aster.tenant.orm.AsterUserRole;
-import com.bloomscorp.aster.tenant.orm.USER_ROLE;
 import com.bloomscorp.behemoth.dao.controller.BehemothCRUDDAOController;
 import com.bloomscorp.hastar.code.ActionCode;
 import com.bloomscorp.nverse.NVerseEmailEncoder;
