@@ -31,12 +31,20 @@ public abstract class AsterOrder<
     public abstract void setOrderItemList(List<OI> orderItemList);
 
     @Column(
-            name = AsterOrderContract.ADDRESS,
+            name = AsterOrderContract.SHIPPING_ADDRESS,
             nullable = false,
             columnDefinition = "JSONB"
     )
     @JdbcTypeCode(SqlTypes.JSON)
-    private Object address;
+    private Object shippingAddress;
+    
+    @Column(
+        name = AsterOrderContract.DELIVERY_ADDRESS,
+        nullable = false,
+        columnDefinition = "JSONB"
+    )
+    @JdbcTypeCode(SqlTypes.JSON)
+    private Object deliveryAddress;
 
     @Column(
             name = AsterOrderContract.TOTAL,
