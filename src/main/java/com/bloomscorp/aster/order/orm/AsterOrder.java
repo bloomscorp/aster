@@ -2,9 +2,12 @@ package com.bloomscorp.aster.order.orm;
 
 import com.bloomscorp.aster.order.contract.AsterOrderContract;
 import com.bloomscorp.aster.support.AsterBehemothORM;
+import com.bloomscorp.aster.tenant.address.orm.ADDRESS_TYPE;
 import com.bloomscorp.aster.tenant.orm.AsterUserRole;
 import com.bloomscorp.nverse.pojo.NVerseTenant;
 import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +24,7 @@ public abstract class AsterOrder<
         E extends Enum<E>,
         R extends AsterUserRole<E>,
         T extends NVerseTenant<E, R>,
-        OI extends AsterOrderItem<E, R, T, ?>
+        OI extends AsterOrderItem<E, R, T>
         > extends AsterBehemothORM {
 
     public abstract T getTenant();
@@ -45,6 +48,13 @@ public abstract class AsterOrder<
     )
     @JdbcTypeCode(SqlTypes.JSON)
     private Object deliveryAddress;
+    
+    @Column(
+        name = AsterOrderContract.SUB_TOTAL,
+        columnDefinition = "NUMERIC",
+        nullable = false
+    )
+    private double subTotal;
 
     @Column(
             name = AsterOrderContract.TOTAL,
@@ -52,14 +62,6 @@ public abstract class AsterOrder<
             nullable = false
     )
     private double total;
-
-    @Column(
-            name = AsterOrderContract.TRANSACTION,
-            nullable = false,
-            columnDefinition = "JSONB"
-    )
-    @JdbcTypeCode(SqlTypes.JSON)
-    private Object transaction;
 
     @Column(
             name = AsterOrderContract.DELETED,
@@ -75,5 +77,47 @@ public abstract class AsterOrder<
             columnDefinition = "BIGINT"
     )
     private Long createdAt;
+    
+    @Column(
+            name = AsterOrderContract.STATUS,
+            nullable = false,
+            columnDefinition = "VARCHAR"
+    )
+    private String status;
+    
+    // TODO: create a "payment_status_enum" at the database level
+    @Enumerated(EnumType.STRING)
+    @Column(
+        name = AsterOrderContract.PAYMENT_STATUS,
+        nullable = false,
+        columnDefinition = "payment_status_enum"
+    )
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @ColumnDefault("'PENDING'")
+    public PAYMENT_STATUS paymentStatus = PAYMENT_STATUS.PENDING;
+    
+    @Column(
+            name = AsterOrderContract.FAILED_ERROR_CODE,
+            columnDefinition = "VARCHAR"
+    )
+    private String failedErrorCode;
+    
+    @Column(
+            name = AsterOrderContract.FAILED_ERROR_MESSAGE,
+            columnDefinition = "VARCHAR"
+    )
+    private String failedErrorMessage;
+    
+    @Column(
+            name = AsterOrderContract.CANCELLED_AT,
+            columnDefinition = "BIGINT"
+    )
+    private Long cancelledAt;
+    
+    @Column(
+            name = AsterOrderContract.CANCELLED_REASON,
+            columnDefinition = "VARCHAR"
+    )
+    private String cancelledReason;
 
 }
