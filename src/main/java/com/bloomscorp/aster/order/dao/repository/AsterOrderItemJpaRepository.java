@@ -13,6 +13,6 @@ public interface AsterOrderItemJpaRepository<
 	R extends AsterUserRole<E>,
 	T extends NVerseTenant<E, R>,
 	O extends AsterOrder<E, R, T, ?>,
-	OT extends AsterOrderItem<E, R, T, O>
+	OT extends AsterOrderItem<E, R, T>
 	> extends JpaRepository<OT, Long> {
 }

@@ -20,12 +20,8 @@ import java.util.LinkedHashMap;
 public abstract class AsterOrderItem<
         E extends Enum<E>,
         R extends AsterUserRole<E>,
-        T extends NVerseTenant<E, R>,
-        O extends AsterOrder<E, R, T, ?>
+        T extends NVerseTenant<E, R>
         > extends AsterBehemothORM {
-
-    public abstract O getOrder();
-    public abstract void setOrder(O order);
 
     @Column(
             name = AsterOrderItemContract.QUANTITY,
@@ -54,8 +50,7 @@ public abstract class AsterOrderItem<
             nullable = false
     )
     @JdbcTypeCode(SqlTypes.JSON)
-    @ColumnDefault("'{}'")
-    private final Object productDetails = new LinkedHashMap<>();
+    private Object productDetails;
 
     @Column(
             name = AsterOrderItemContract.SHIPPING_CODE,
@@ -103,13 +98,6 @@ public abstract class AsterOrderItem<
     )
     @ColumnDefault("0")
     private final Long estimatedDeliveryTo = 0L;
-
-    @Column(
-            name = AsterOrderItemContract.PAYMENT_STATUS,
-            columnDefinition = "payment_status_enum",
-            nullable = false
-    )
-    private String paymentStatus;
 
     @Column(
             name = AsterOrderItemContract.CREATED_AT,

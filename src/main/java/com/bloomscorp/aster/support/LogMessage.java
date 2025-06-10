@@ -31,6 +31,15 @@ public final class LogMessage {
 	public static final String UNAUTH_ADDRESS_UPDATE_REQUEST = buildUnAuthUpdateLog("address");
 	public static final String ADDRESS_DELETED = buildDeleteAccessLog("address");
 	public static final String UNAUTH_ADDRESS_DELETE_REQUEST = buildUnAuthDeleteLog("address");
+	
+	/*--ORDER--*/
+	public static final String UNAUTH_ORDER_LIST_REQUEST = buildUnAuthListAccessLog("order");
+	public static final String NEW_ORDER_CREATED = buildNewCreatedAccessLog("order");
+	public static final String UNAUTH_ORDER_CREATE_REQUEST = buildUnAuthCreateLog("order");
+	public static final String ORDER_UPDATED = buildUpdateAccessLog("order");
+	public static final String UNAUTH_ORDER_UPDATE_REQUEST = buildUnAuthUpdateLog("order");
+	public static final String ORDER_DELETED = buildDeleteAccessLog("order");
+	public static final String UNAUTH_ORDER_DELETE_REQUEST = buildUnAuthDeleteLog("order");
 
 	private LogMessage() {}
 
